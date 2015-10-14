@@ -7,11 +7,20 @@ Returns all Genres:  `/rest/getGenres`
 * example: http://prazor.com/index.php/rest/getGenres/
 
 ```javascript
-[{
-	title: "Premium",
-	genre_image: "",
-	entry_id: 9
-}]
+[
+	{
+		title: "Premium",
+		genre_image: "",
+		entry_id: 9
+	},
+	{
+		title: "Ecletic",
+		genre_image: "",
+		entry_id: 8
+	}
+	
+	...
+]
 ```
 
 Returns Genre Details and stations:  `/rest/getGenres/details/<ENTRY_ID>`
