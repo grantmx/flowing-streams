@@ -4,4 +4,4 @@ About: Project repo for Flowing Streams (Prazor, TruNuz, etc.)
 
 Returns all Genres:  http://prazor.com/rest/getGenres
 
-Returns Genre Details and stations /rest/getGenres/details/<ENTRY_ID>
+Returns Genre Details and stations:  http://prazor.com/rest/getGenres/details/ADD_ENTRY_ID
