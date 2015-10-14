@@ -1,4 +1,4 @@
-# Prazor API
+# Prazor JSON API
 Documentation around the Prazor API rest services.
 
 ## Rest Services:
