@@ -1,5 +1,4 @@
-# flowing-streams
-Project repo for Flowing Streams (Prazor, TruNuz, etc.)
+About: Project repo for Flowing Streams (Prazor, TruNuz, etc.)
 
 # Rest Services:
 
