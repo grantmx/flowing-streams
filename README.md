@@ -29,14 +29,7 @@ Returns Genre Details and stations:  `/rest/getGenres/details/<ENTRY_ID>`
 ```javascript
 [{
 	title: "Rock",
-	url_title: "rock",
 	entry_id: 1,
-	channel_id: 1,
-	author_id: 1,
-	status: "open",
-	entry_date: 1444841100000,
-	edit_date: 1444856070000,
-	expiration_date: null,
 	genre_image: "",
 	stations: [{
 		row_id: 1,
