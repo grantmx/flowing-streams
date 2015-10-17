@@ -49,6 +49,8 @@ Returns Genre Details and stations:  `/rest/getGenres/details/<ENTRY_ID>`
 		station_image: "",
 		station_id: "PRAZOR3",
 		station_information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-	}]
+	}],
+	
+	....
 }]
 ```
