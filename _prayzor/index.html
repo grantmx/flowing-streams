@@ -1,1 +1,28 @@
-prazor.com
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/framework-mx.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body ng-controller="MainController">	
+	<div class="grid sideBar" ng-class="{open: tgState}" ng-include='"partials/navigation.html"'></div>		
+	<div class="grid page-container" ng-style="{'width': pageWidth, 'left': leftPos}">
+		<div class="span-1-1 no-pad" ng-include='"templates/header.html"'></div>
+		<div class="span-1-1 no-pad" ng-view></div>				
+	</div>
+
+	<div class="grid player-bar no-pad" ng-show="currentStation.genre.title && currentStation.station.station_name">
+		<div class="player-contatianer" ng-include='"partials/player.html"'></div>
+	</div>
+	
+	<!-- Vendor: Javascripts -->
+	<script src="scripts/jquery.min.js"></script>
+
+	<!-- Vendor: Angular, followed by our custom Javascripts -->
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/angular-route.min.js"></script>
+
+	<!-- Our Website Javascripts -->
+	<script src="scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+body{
+	overflow-x:hidden;
+	background:rgba(0, 0, 0, 0) url("../images/background-lg.jpg");
+}
+/*content container*/
+.page-container, .player-contatianer {
+	margin: 0 auto;
+	height: 100%;
+	width: 100%;
+}
+.page-container{
+	padding-bottom: 131px;
+}
+/*logo*/
+.logo img{
+	width: 90%;
+}
+/*Navigation*/
+.navBar > nav a{
+	display: inline-block;
+	text-decoration: none;
+	padding: 20% 1em 0;
+}
+.icon-heart img{
+	padding: 70% .3em 0;
+}
+.hamburgerToggle{display: none;}
+ul.navigation > li{display: inline;}
+
+.sideBar nav{display: none;}
+
+a{
+	text-decoration: none;
+}
+
+/*Colors*/
+.color-white{
+	color: #fff;
+}
+.color-white-bg{
+	background: #fff;
+}
+.color-grey{
+	color: #9B9B9B;
+}
+.color-grey-bg{
+	background: #9B9B9B;
+}
+.color-gold{
+	color: #F5A623;
+}
+.color-gold-bg{
+	background: #F5A623;
+}
+.color-light-white{
+	color: #D5D5D5;
+}
+.light-box{	
+	background: rgba(255,255,255, 0.2);
+	display: block;		
+}
+.white-border-box {
+    border: 1px solid #fff;
+    padding: 5px;
+}
+/*fonts*/
+.upperCase{
+	text-transform: uppercase;
+}
+.b{font-weight: bold;}
+/*Genre Pods*/
+.view-genres, .view-stations {
+    margin-left: 0;
+}
+.view-genres > li{
+	list-style: none;
+	cursor: pointer;
+}
+
+.view-genres > li > a{
+	height: 200px;
+}
+
+.view-genres > li > a > span {
+    display: block;
+    font-size: 18px;
+    margin-top: -55px;
+}
+
+
+/*Stations*/
+
+.station-header > .light-box{
+    height: 200px;
+}
+.station-header{
+    padding: 0 1.1em 1.1em;
+}
+.station-header img{
+	display: block;
+    margin: 0 auto;
+}
+.station-header .station-details{
+	margin-top: -3em;
+}
+.view-stations a span {
+    display: block;
+    padding: 7em 0;
+}
+.view-stations a.button-speaker {
+	background: rgba(255,255,255, 0.7);
+    padding: 1em 0;
+    display: block;
+}
+.view-stations > li{
+	list-style: none;
+	cursor: pointer;	
+}
+.view-stations .station_avatar{
+	display: none;
+}
+
+/*Player Bar*/
+.player-bar {
+    background: #666 none repeat scroll 0 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+
+
+/*Mobile*/
+@media only screen and (max-device-width: 767px) {
+	
+	.navBar, .subNav{display: none;}
+	/* SideBar Menu Styles */
+	.hamburgerToggle{display: block;}
+
+	.sideBar{
+		width: 75%;
+		left: 0px;
+		top: 0px;
+		position: fixed;
+		z-index: -1;	
+		height: 100%;
+	}
+	.sideBar ul.navigation > li, .sideBar.open nav{display: block;}
+	.page-container{
+		position: relative;
+		top: 0;
+		left: 0px;		
+		transition: left .2s;
+		z-index: 1;
+		padding: 0 0 131px 0;
+	}
+	.sideBar.open{
+		background-color: #000;
+	}
+	.sideBar.open + .page-container{
+		position: fixed;
+	}
+
+	.icon-heart img {
+	    padding: 50% 0.3em 0;
+	    width: 50%;
+	}
+	.station-header .station-details {
+	    margin-top: -4em;
+	}
+	.view-stations a span {
+	    display: block;
+	    padding:0;
+	}
+	.view-stations  > li{
+		border-bottom: solid 1px rgba(255,255,255, 0.3);
+	}
+	.view-stations a.button-speaker, .view-stations .light-box{
+		background: none;
+	}
+	.view-stations .station_avatar{
+		display: block;
+	}
+	.view-stations > li[class*="span-"]:last-of-type{
+		border: none;
+	}
+	.view-stations a.button-speaker, .station-header{
+		padding: 0;
+	}
+
+}
+/*Tablet*/
+@media only screen and (min-device-width : 768px) {
+	.sideBar{display: none;}
+	.page-container, .player-contatianer {
+		width: 100%;
+	}
+}
+
+/*Desktop*/
+/*@media only screen and (min-device-width: 1024px){
+	.sideBar{display: none;}
+	.page-container, .player-contatianer {
+		width: 100%;
+	}
+}*/
