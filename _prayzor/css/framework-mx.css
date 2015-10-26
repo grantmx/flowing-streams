@@ -84,8 +84,8 @@ hr {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  padding-right: 1.1em;
-  padding-left: 1.1em;
+  padding-right: 2em;
+  padding-left: 2em;
 }
 
 .inner {
@@ -109,7 +109,7 @@ hr {
 
 [class*='span-'] {
   float: left;
-  padding: 1.1em;
+  padding: 2em;
   position: relative;
 }
 
@@ -119,11 +119,11 @@ hr {
 }*/
 
 .content {
-  padding-bottom: 1.1em;
+  padding-bottom: 1em;
 }
 
 .content-top {
-  margin-top: 1.1em;
+  margin-top: 1em;
 }
 
 .content-spacing {
@@ -999,7 +999,7 @@ h6 {
 }
 
 p, ul, ol {
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
 }
 
 address, cite {
@@ -1015,17 +1015,17 @@ blockquote {
 }
 
 ul, ol {
-  margin-left: 2em;
+  margin-left: 1em;
 }
 
 ul.inline, ol.inline {
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
   padding-left: 0;
   list-style: none;
 }
 ul.inline > li, ol.inline > li {
   display: inline-block;
-  margin-right: 2em;
+  margin-right: 1em;
 }
 ul.inline > li.end, ol.inline > li.end {
   margin: 0;
@@ -1084,7 +1084,7 @@ ul.unstyled.vertical-list li {
 }
 
 .pad, [class*='span-']:last-of-type.pad {
-  padding: 1.1em;
+  padding: 2em;
 }
 
 .no-pad {
@@ -1092,19 +1092,19 @@ ul.unstyled.vertical-list li {
 }
 
 .pad-top {
-  padding-top: 1.1em;
+  padding-top: 1em;
 }
 
 .pad-bottom {
-  padding-bottom: 1.1em;
+  padding-bottom: 1em;
 }
 
 .pad-right {
-  padding-right: 1.1em;
+  padding-right: 2em;
 }
 
 .pad-left {
-  padding-left: 1.1em;
+  padding-left: 2em;
 }
 
 .no-margin, ul.inline .no-margin, ol.inline .no-margin {
@@ -1112,19 +1112,19 @@ ul.unstyled.vertical-list li {
 }
 
 .right-space {
-  margin-right: 1.1em;
+  margin-right: 1em;
 }
 
 .left-space {
-  margin-left: 1.1em;
+  margin-left: 1em;
 }
 
 .bottom-space {
-  margin-bottom: 1.1em;
+  margin-bottom: 1em;
 }
 
 .top-space {
-  margin-top: 1.1em;
+  margin-top: 1em;
 }
 
 img.stretchy {
@@ -1341,7 +1341,7 @@ input, textarea, select {
   display: inline-block;
   font-size: 1.4em;
   line-height: 2em;
-  padding: 1em;
+  padding: 2em;
   width: 200px;
   vertical-align: middle;
 }
@@ -1585,7 +1585,7 @@ label {
   left: 0;
   z-index: 1060;
   width: 216px;
-  padding: 1em;
+  padding: 2em;
   text-align: left;
   white-space: normal;
   background-color: #fff;

@@ -1,8 +1,10 @@
 <header>
-    <!-- Hamburger menu Control -->
-    <div class="hamburgerToggle span-1-6-xs span-1-6-sm">
-        <hamburger-toggle data-state="tgState" data-pagewidth="pageWidth"></hamburger-toggle>        
-    </div>
+    <!-- Menu Toggle -->
+    <div class="show-on-mobile span-1-6-xs span-1-6-sm span-1-10-md l">        
+        <a href="#" class="icon-menu" ng-click="quickMenu(menuItem)">
+            <img src="images/{{menuItem}}_icon.svg">
+        </a>
+    </div>  
 
     <!-- <div class="button-back span-1-6-sm">
         <a href="#/genres">
@@ -11,14 +13,14 @@
     </div> -->
 
     <!-- Logo Container -->
-    <div class="span-4-6-xs span-4-6-sm span-3-6-md no-pad c">
+    <div class="span-4-6-xs span-4-6-sm span-4-10-md no-pad c">
         <a class="logo"><img src="images/logo.svg"></a>
     </div>
     <!-- Navigation Container -->
-    <div class="navBar span-4-10-md no-pad" ng-include='"partials/navigation.html"'></div>
+    <div class="navBar span-5-10-md hide-on-mobile c" ng-include='"partials/navigation.html"'></div>
     <!-- Love This Container -->
-    <div class="span-1-6-xs span-1-6-sm span-1-10-md no-pad r">        
-        <a href="#" class="icon-heart">
+    <div class="span-1-6-xs span-1-6-sm span-1-10-md r">        
+        <a class="icon-heart">
             <img src="images/heart_icon.svg">
         </a>
     </div>    
