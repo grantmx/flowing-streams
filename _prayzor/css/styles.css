@@ -1,6 +1,6 @@
 body{
 	overflow-x:hidden;
-	background:rgba(0, 0, 0, 0) url("../images/background-lg.jpg");
+	background:rgba(0, 0, 0, 10) url("../images/background-lg.jpg") no-repeat right top;
 }
 a{
 	text-decoration: none;
@@ -123,7 +123,18 @@ ul > li{
     z-index: 2;
 }
 
+ul.view-carousel li > a{
+	width: 600px;
+	height: 600px;
+	display: inline-block;
+	background-color: rgba(255,255,255, 0.7);
+	font-size: 24px;
+}
 
+ul[rn-carousel] {
+    height: 600px;
+}
+.swiper{overflow: hidden;}
 
 /*Mobile*/
 @media only screen and (max-device-width: 767px) {
