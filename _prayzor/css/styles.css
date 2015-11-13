@@ -1,0 +1,207 @@
+body{
+	overflow-x:hidden;
+	background:rgba(0, 0, 0, 10) url("../images/background-lg.jpg") no-repeat right top;
+}
+a{
+	text-decoration: none;
+}
+ul > li{
+	list-style: none;
+}
+.show-on-mobile{display: none;}
+
+/*content container*/
+.page-container, .page-sidebar, .player-container {
+	margin: 0 auto;
+	height: 100%;
+}
+.page-container{
+	padding-bottom: 131px;
+}
+/*logo*/
+.logo img{
+	width: 90%;
+}
+
+/*User Avatar*/
+.user-avatar{
+	width: 20%;
+}
+/*Misc*/
+.block{
+	display: block;
+}
+.pointer{
+	cursor: pointer;
+}
+
+/*Colors*/
+.color-white{
+	color: #fff;
+}
+.color-white-bg{
+	background: #fff;
+}
+.color-grey{
+	color: #9B9B9B;
+}
+.color-grey-bg{
+	background: #9B9B9B;
+}
+.color-gold{
+	color: #F5A623;
+}
+.color-gold-bg{
+	background: #F5A623;
+}
+.color-light-white{
+	color: #D5D5D5;
+}
+.light-box{	
+	background: rgba(255,255,255, 0.2);
+	display: block;		
+}
+.white-border-box {
+    border: 1px solid #fff;
+    padding: 5px;
+}
+
+/*fonts*/
+.upperCase{
+	text-transform: uppercase;
+}
+.b{font-weight: bold;}
+
+/*Genre Pods*/
+.view-genres, .view-stations {
+    margin-left: 0;
+}
+
+.view-genres > li > a > span {
+    display: block;
+    font-size: 18px;
+    margin-top: -55px;
+}
+
+
+/*Stations*/
+.station-header > .light-box{
+ /*   height: 200px;*/
+}
+.station-header{
+    padding: 0 2em 2em;
+}
+.station-header img{
+	display: block;
+    margin: 0 auto;
+}
+.station-header .station-details{
+	margin-top: -3em;
+}
+.view-stations a.button-speaker {
+	background: rgba(255,255,255, 0.7);
+    padding: 1em 0;
+    display: block;
+}
+.view-stations > li{
+	list-style: none;
+	cursor: pointer;	
+}
+.view-stations .station_avatar{
+	display: none;
+}
+.view-stations .station-name{
+	display: none;
+}
+
+/*Player Bar*/
+.player-bar {
+    background: #666 none repeat scroll 0 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+ul.view-carousel li > a{
+	width: 600px;
+	height: 600px;
+	display: inline-block;
+	background-color: rgba(255,255,255, 0.7);
+	font-size: 24px;
+}
+
+ul[rn-carousel] {
+    height: 600px;
+}
+.swiper{overflow: hidden;}
+
+/*Mobile*/
+@media only screen and (max-device-width: 767px) {
+	
+	.hide-on-mobile{display: none;}
+	/* page-sidebar Menu Styles */
+	.show-on-mobile{display: block !important;}
+
+	.icon-menu img, .icon-heart img {
+	    padding: 50% 0.3em 0;
+	    width: 50%;
+	}
+	.station-header .station-details {
+	    margin-top: -3em;
+	}
+	.view-stations .light-box{
+		background: none;
+	}
+	.view-stations > li{
+		border-bottom: solid #eee 1px;
+	}
+	.view-stations > li[class*="span-"]:last-of-type{
+		border: none;
+	}
+	.station-header{
+		padding: 0;
+	}
+
+	.view-stations .dummyImage, .view-stations .speaker-bar > img{
+		width: 75px;
+		height: 75px;		
+	}
+	.dummyImage{
+		background: rgba(255,255,255, 0.7);
+	}
+	.station-info .dummyImage, .player-play-pause{
+		width: 115px;
+		height: 115px;
+	}
+
+}
+/*Tablet*/
+@media only screen and (min-device-width : 768px) {
+	.page-sidebar{display: none;}
+	.icon-menu img, .icon-heart img{
+		margin-top: 2em
+	}
+	.icon-heart img{
+		width: 50px;
+	}
+	.page-container{
+		width: 100%;
+	}
+	.view-stations{
+		padding: 0;
+	}
+	.view-stations .speaker-name {
+	    display: block;
+	    padding: 7em 0;
+	}
+	
+}
+
+/*Desktop*/
+/*@media only screen and (min-device-width: 1024px){
+	.page-sidebar{display: none;}
+	.page-container, .player-container {
+		width: 100%;
+	}
+}*/

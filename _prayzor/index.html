@@ -1,1 +1,38 @@
-prazor.com
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/framework-mx.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/angular-carousel.css">
+</head>
+<body ng-controller="MainController" ng-swipe-left="showSidebar = false">
+	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"'></div>		
+	<!-- ng-style="{'width': pageWidth, 'left': leftPos}"  -->
+	<div class="grid page-container no-pad" ng-show="!showSidebar">
+		<div class="span-1-1 no-pad" ng-include='"templates/header.html"'></div>
+		<div class="span-1-1 no-pad" ng-view></div>				
+	</div>
+
+	<div class="grid player-bar no-pad" ng-show="(currentStation.genre && currentStation.station) && !hidePlayerBar">
+		<div class="station-info span-4-5-xs span-4-5-sm show-on-mobile no-pad" ng-include='"partials/stationInfo.html"'></div>
+		<div class="player-container span-1-5-xs span-1-5-sm span-1-3-md no-pad" ng-include='"partials/player-controls.html"'></div>
+		<div class="station-details span-2-3-md hide-on-mobile" ng-include='"partials/stationDetails.html"'></div>
+	</div>
+	
+	<!-- Vendor: Javascripts -->
+	<script src="scripts/jquery.min.js"></script>
+
+	<!-- Vendor: Angular, followed by our custom Javascripts -->
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/angular-route.min.js"></script>
+	<script src="scripts/angular-touch.min.js"></script>
+	<script src="scripts/angular-carousel.min.js"></script>
+	<script src="scripts/angular-audio.js"></script>
+	<!-- JW Player 
+	​<script src="scripts/widgets/jwplayer/jwplayer.js" ></script>
+	<script>jwplayer.key="5Kb4HAwQS98FwlTNHg5Z2/pLFBgd6IH9Z9jlWg==";</script>
+	-->
+	<!-- Our Website Javascripts -->
+	<script src="scripts/app.js"></script>
+</body>
+</html>
