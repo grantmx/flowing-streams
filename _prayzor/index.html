@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<link rel="stylesheet" type="text/css" href="css/framework-mx.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/angular-carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/player-volume-control.css">
 </head>
-<body ng-controller="MainController" ng-swipe-left="showSidebar = false">
+<body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-{{playerView}} ">
 	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"'></div>		
 	<!-- ng-style="{'width': pageWidth, 'left': leftPos}"  -->
 	<div class="grid page-container no-pad" ng-show="!showSidebar">
 		<div class="span-1-1 no-pad" ng-include='"templates/header.html"'></div>
-		<div class="span-1-1 no-pad" ng-view></div>				
+		<div class="span-1-1 no-pad" ng-class="{'playerMargin' : !hidePlayerBar}" ng-view></div>				
 	</div>
 
-	<div class="grid player-bar no-pad" ng-show="(currentStation.genre && currentStation.station) && !hidePlayerBar">
+	<div class="grid player-bar no-pad" ng-hide="hidePlayerBar">
 		<div class="station-info span-4-5-xs span-4-5-sm show-on-mobile no-pad" ng-include='"partials/stationInfo.html"'></div>
+		<div class="span-1-1 player-subtitle top-space show-on-mobile">
+			<p class="color-white large c">
+				<span class="b">{{currentStation.station.station_information}}</span>
+			</p>
+		</div>
 		<div class="player-container span-1-5-xs span-1-5-sm span-1-3-md no-pad" ng-include='"partials/player-controls.html"'></div>
-		<div class="station-details span-2-3-md hide-on-mobile" ng-include='"partials/stationDetails.html"'></div>
+		<div class="station-details span-2-3-md hide-on-mobile no-pad" ng-include='"partials/stationDetails.html"'></div>
 	</div>
 	
 	<!-- Vendor: Javascripts -->

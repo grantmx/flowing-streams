@@ -23,12 +23,34 @@
 
 	}]);
 
-	app.controller('MainController', ['$scope', '$location', function($scope, $location) {
+	app.controller('MainController', ['$scope', '$location', '$templateCache', function($scope, $location, $templateCache) {
 		$scope.showSidebar = false;
 		$scope.currentStation = {};
 		$scope.menuItem = 'menu';
-		$scope.showControls = false;
-		
+		$scope.hidePlayerBar = true;
+
+		$scope.$on('$routeChangeStart', function(next, current) {		   
+		   var currenlocation = $location.url();
+		   console.log('Route Changed: ', currenlocation.slice(1));
+		   $scope.menuItem = currenlocation;
+		   $scope.playerView = currenlocation.slice(1);
+
+		    if (typeof(current) !== 'undefined'){
+	            $templateCache.remove(current.templateUrl);
+	    	}
+		});
+
+		// Watch Genre
+		$scope.$on('genreChanged', function(event, genre){
+			$scope.currentStation.genre = genre;
+			$scope.station = $scope.currentStation.station;
+			$scope.currentStation.station = '';
+		});
+
+		$scope.$on('stationChanged', function(event, details){
+			setStation(details);
+		});
+
 		// Watch side bar toggle
 		$scope.$watch('showSidebar', function(model){
 			console.log(model);
@@ -37,36 +59,34 @@
 			// $scope.leftPos = (model) ? pagewidth * .75 + 'px' : '';
 		});
 
+		// Watches Index to change station
+		$scope.$watch('currentStation.$index', function (index, oldIndex) {
+			if (index !== oldIndex) {
+				var details = {};
+				details.station = $scope.currentStation.stations[index];
+				details.index = index;
+				details.stations = $scope.currentStation.stations;
+
+				details.index = index;
+				setStation(details);
+			};
+		});
+
 		$scope.quickMenu = function(item){
-			var currenlocation = item || 'menu'
-			if(currenlocation === 'stations'){
+			var currenlocation = $location.url();
+
+			if(currenlocation === '/stations'){
 				$location.url('genres');
-				$scope.menuItem = 'menu';
 			}
-			else if(currenlocation === 'playlist'){
+			else if(currenlocation === '/audioplayer'){
 				$location.url('stations');
-				$scope.menuItem = 'stations';
 			}
 			else{
 				$location.url('genres');
 				$scope.showSidebar = !$scope.showSidebar;
-			}			
-		};		
-
-		// Watch Genre
-		$scope.$on('genreChanged', function(event, genre){
-			$scope.currentStation.genre = genre;
-			$scope.menuItem = 'stations';
-
-		});
-
-		$scope.$on('stationChanged', function(event, details){
-			console.log('details.index ', details.index);
-			$scope.currentStation.station = details.station;
-			$scope.currentStation.stations = details.stations;
-			$scope.currentStation.$index = (details.index >= 0) ? details.index : $scope.currentStation.$index;
-			$scope.menuItem = 'playlist';
-		});
+			}
+		};
+		
 
 		if(!$scope.currentStation.genre){
 			$location.url('genres');
@@ -77,6 +97,13 @@
 			lName : 'Crockett',
 			email : 'dcrockett2@hotmail.com'
 		};
+
+		function setStation(details){
+			$scope.currentStation.station = details.station;
+			$scope.currentStation.stations = details.stations;
+			$scope.currentStation.$index = (details.index >= 0) ? details.index : $scope.currentStation.$index;
+			$scope.hidePlayerBar = false;
+		}
     }]);
 
 	app.controller('GenreController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
@@ -94,7 +121,7 @@
 				console.log(error);
 			});	
 
-		// $scope.genres = [{"title":"Blended","genre_image":"","entry_id":3},{"title":"Country","genre_image":"","entry_id":7},{"title":"Inspirational","genre_image":"","entry_id":4},{"title":"Pop","genre_image":"","entry_id":2},{"title":"Premium","genre_image":"","entry_id":9},{"title":"Rock","genre_image":"","entry_id":1},{"title":"Urban","genre_image":"","entry_id":5},{"title":"World","genre_image":"","entry_id":8}];	
+		// $scope.genres = [{"title":"Premium","genre_image":"","entry_id":9},{"title":"Pop","genre_image":"","entry_id":2},{"title":"Rock","genre_image":"","entry_id":1},{"title":"Inspirational","genre_image":"","entry_id":4},{"title":"Urban","genre_image":"","entry_id":5},{"title":"Country","genre_image":"","entry_id":7},{"title":"World","genre_image":"","entry_id":8},{"title":"Blended","genre_image":"","entry_id":3}];
 
 		$scope.setGenre = function(genre){
 			$scope.$emit('genreChanged', genre);
@@ -107,10 +134,11 @@
 	app.controller('StationController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
 		$scope.error = '';		
 		
-		$scope.playStation = function(station){
+		$scope.playStation = function(station, index){
 			var details = {};
 			
 			details.station = station;
+			details.index = index;
 			details.stations = $scope.stations;
 			$scope.$emit('stationChanged', details);
 		};
@@ -123,23 +151,8 @@
 			details.stations = $scope.stations;
 
 			$location.url('audioplayer');
-			console.log('New Index ', index);
 			$scope.$emit('stationChanged', details);			
-		};
-
-
-		// Watches Carosel Index to change station on moved
-		$scope.$watch('currentStation.$index', function (index, oldIndex) {
-			if (index !== oldIndex) {
-				var details = {};
-				details.station = $scope.currentStation.stations[index];
-				details.index = index;
-				details.stations = $scope.currentStation.stations;
-
-				details.index = index;
-				$scope.$emit('stationChanged', details);
-			};
-		});
+		};		
 
 		function fetchStations() {			
 			var entryID = ($scope.currentStation.genre) ? $scope.currentStation.genre.entry_id : 1,
@@ -155,24 +168,30 @@
 				},function(error){
 					console.log(error);
 				});
-	
-			console.log($scope.stations);
 	    };
 
-	    // $scope.stations = [{"row_id":41,"station_name":"Pop Mix","station_image":"","station_id":"PRAZOR41","station_information":""},{"row_id":42,"station_name":"Love Mix","station_image":"","station_id":"PRAZOR42","station_information":""},{"row_id":43,"station_name":"Easy Mix","station_image":"","station_id":"PRAZOR43","station_information":""},{"row_id":44,"station_name":"60's","station_image":"","station_id":"PRAZOR44","station_information":""},{"row_id":45,"station_name":"70's","station_image":"","station_id":"PRAZOR45","station_information":""}];
+	    // $scope.stations = [{"row_id":1,"station_name":"Generation Z","station_image":"http://prazor.com/images/uploads/genre/Gen_Z.jpg","station_id":"PRAZOR18","station_domain":"ice41","station_information":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},{"row_id":2,"station_name":"Upbeat","station_image":"http://prazor.com/images/uploads/genre/Upbeat.jpg","station_id":"PRAZOR19","station_domain":"ice41","station_information":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},{"row_id":3,"station_name":"Ageless Rock","station_image":"http://prazor.com/images/uploads/genre/Ageless_rock.jpg","station_id":"PRAZOR20","station_domain":"ice41","station_information":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},{"row_id":21,"station_name":"Classic Alternative","station_image":"http://prazor.com/images/uploads/genre/Classic_Alt.jpg","station_id":"PRAZOR21","station_domain":"ice6","station_information":""},{"row_id":22,"station_name":"Adult Alternative","station_image":"http://prazor.com/images/uploads/genre/Alternative.jpg","station_id":"PRAZOR22","station_domain":"ice6","station_information":""},{"row_id":23,"station_name":"Blues","station_image":"http://prazor.com/images/uploads/genre/Blues.jpg","station_id":"PRAZOR23","station_domain":"ice6","station_information":""},{"row_id":24,"station_name":"Acoustic","station_image":"","station_id":"PRAZOR24","station_domain":"ice6","station_information":""},{"row_id":25,"station_name":"Independent","station_image":"","station_id":"PRAZOR25","station_domain":"ice6","station_information":""}];
 	    fetchStations();
 
 	}]);
 
-	app.controller('PlayerController', ['$scope', 'ngAudio', function($scope, ngAudio){
+	app.controller('PlayerController', ['$scope', 'ngAudio', function($scope, ngAudio){		
 		$scope.playing = true;
 		setPlayPauseBtn($scope.playing);
 		
-		$scope.previous = function(){
-			console.log('previous');
+		$scope.previous = function(currentStation){
+			console.log('previous', currentStation);
+			var index = (currentStation.$index - 1);
+			if(index >= 0){
+				setStationDetails(index,currentStation);
+			}
 		};
-		$scope.next = function(){
-			console.log('next');	
+		$scope.next = function(currentStation){
+			console.log('next', currentStation);
+			var index = (currentStation.$index + 1);
+			if(index < currentStation.stations.length){
+				setStationDetails(index,currentStation);
+			}				
 		};
 
 		$scope.playPause = function(){
@@ -187,36 +206,37 @@
 			setPlayPauseBtn($scope.playing);			
 		};
 
-		$scope.$watch('currentStation.station.station_id', function(model, oldModel){
-			console.log(model, oldModel);		
-			if(model && model !== oldModel){
-				playAudio(model);
-			}
-			
+		$scope.$watch('currentStation.station.station_id', function(model, oldModel){		
+			if(model && model !== oldModel){				
+				playAudio($scope.currentStation.station);
+			}			
 		});
 
 		// Sets play btn property
 		function setPlayPauseBtn(isPlaying){
 			$scope.playPauseBtn = (!isPlaying) ? 'play' : 'pause';
-			if(isPlaying){
-				
-			}
-			else{
-				
-			}
 		}
 
-		function playAudio(staion){			
-			// audioplayer = new Audio('http://ice41.securenetsystems.net/PRAZOR1');
-			// audioplayer.autoplay = true;
+		function playAudio(station){
+			var volume = .5;
 			if($scope.audio){
-				console.log('killplayAudio');
+				volume = $scope.audio.volume;			
 				$scope.audio.stop();
 				$scope.audio.unbind();
 			}
-			console.log('CreateplayAudio');
-			$scope.audio = ngAudio.load("http://ice41.securenetsystems.net/PRAZOR1"); // returns NgAudioObject
+			$scope.audio = ngAudio.load("http://" + station.station_domain + ".securenetsystems.net/" + station.station_id); // returns NgAudioObject
+			$scope.audio.volume = volume;
 			$scope.audio.play();
+			$scope.playing = true;
+			setPlayPauseBtn($scope.playing);
+		}
+
+		function setStationDetails(index, currentStation){
+			var details = {};
+			details.station = currentStation.stations[index];
+			details.index = (index);
+			details.stations = currentStation.stations;
+			$scope.$emit('stationChanged', details);
 		}
 	}]);
 
@@ -224,7 +244,14 @@
 		
 		this.getData = function(config){
 			var deferred = $q.defer();
-			$http({method: config.method, url: config.url, cache: $templateCache})
+			$http({
+				method: config.method, 
+				url: config.url, 
+				cache: $templateCache,
+				headers: {
+				  'Content-Type': 'application/json'
+				},
+			})
 				.then(					
 					function(response) {
 						if(response.data){

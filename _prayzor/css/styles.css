@@ -15,8 +15,13 @@ ul > li{
 	margin: 0 auto;
 	height: 100%;
 }
-.page-container{
-	padding-bottom: 131px;
+.page-sidebar{
+	overflow-x:hidden;
+	background:rgba(0, 0, 0, 10) url("../images/background-lg.jpg") no-repeat left top;
+}
+
+.playerMargin{
+	margin-bottom: 131px;
 }
 /*logo*/
 .logo img{
@@ -57,9 +62,9 @@ ul > li{
 .color-light-white{
 	color: #D5D5D5;
 }
-.light-box{	
+.light-box, .speaker-bar{	
 	background: rgba(255,255,255, 0.2);
-	display: block;		
+	display: block;	
 }
 .white-border-box {
     border: 1px solid #fff;
@@ -76,7 +81,9 @@ ul > li{
 .view-genres, .view-stations {
     margin-left: 0;
 }
-
+.view-genres > li > a{
+	height: 200px;
+}
 .view-genres > li > a > span {
     display: block;
     font-size: 18px;
@@ -85,18 +92,12 @@ ul > li{
 
 
 /*Stations*/
-.station-header > .light-box{
- /*   height: 200px;*/
-}
 .station-header{
     padding: 0 2em 2em;
 }
-.station-header img{
-	display: block;
-    margin: 0 auto;
-}
+
 .station-header .station-details{
-	margin-top: -3em;
+	margin-top: -2em;
 }
 .view-stations a.button-speaker {
 	background: rgba(255,255,255, 0.7);
@@ -123,18 +124,28 @@ ul > li{
     z-index: 2;
 }
 
+.player-container a img{
+	width: 65%;
+}
+.player-volume-control{
+	display: none;
+}
+.station-details .details{
+	line-height: 1em;
+}
 ul.view-carousel li > a{
 	width: 600px;
-	height: 600px;
 	display: inline-block;
 	background-color: rgba(255,255,255, 0.7);
 	font-size: 24px;
 }
 
 ul[rn-carousel] {
-    height: 600px;
+    height: 450px;
 }
 .swiper{overflow: hidden;}
+/*Slider Bar*/
+
 
 /*Mobile*/
 @media only screen and (max-device-width: 767px) {
@@ -145,14 +156,16 @@ ul[rn-carousel] {
 
 	.icon-menu img, .icon-heart img {
 	    padding: 50% 0.3em 0;
-	    width: 50%;
+	    width: 85%;    
 	}
 	.station-header .station-details {
-	    margin-top: -3em;
+	    margin: 0;
+	    padding: 2em;
 	}
-	.view-stations .light-box{
+	.view-stations .light-box, .speaker-bar{
 		background: none;
-	}
+		min-height: auto;
+	}	
 	.view-stations > li{
 		border-bottom: solid #eee 1px;
 	}
@@ -174,7 +187,45 @@ ul[rn-carousel] {
 		width: 115px;
 		height: 115px;
 	}
+	.break-on-mobile{
+		display: block;
+		line-height: 1em;
+	}
+	.player-view-stations .previous, .player-view-stations .forward, 
+	.player-view-genres .previous, .player-view-genres .forward,
+	.player-view-stations .player-volume, .player-view-genres .player-volume,
+	.player-view-stations .player-subtitle, .player-view-genres .player-subtitle,
+	.player-view-audioplayer .station-info{
+		display:none !important;
+	}
+	.player-view-stations .playPause, .player-view-genres .playPause{
+		width: 100%;
+	}
+	.player-view-audioplayer .player-bar{
+		background:none;
+    	bottom: 10px;
+	}
+	.player-view-audioplayer .player-volume-control{
+		display: block;
+	}
+	.player-view-audioplayer .player-container{
+		width: 100%;
+	}
+	.player-view-audioplayer .playerMargin{
+		margin: 0;
+	}
+	.player-view-audioplayer .player-container .player-controls{
+		width: 60%;
+		margin: 1em auto 0;
+	}
+	.player-view-audioplayer .player-container a.playPause img{
+		height: auto
+	}
+	.player-view-audioplayer .previous, .player-view-audioplayer .forward{
+		margin-top: 60px;
+	}
 
+	
 }
 /*Tablet*/
 @media only screen and (min-device-width : 768px) {
@@ -194,6 +245,9 @@ ul[rn-carousel] {
 	.view-stations .speaker-name {
 	    display: block;
 	    padding: 7em 0;
+	}
+	.view-stations .speaker-bar{
+		padding: 1em;
 	}
 	
 }

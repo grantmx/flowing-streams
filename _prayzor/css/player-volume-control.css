@@ -1,0 +1,87 @@
+.player-volume-control input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 7.45px 0;
+  background: none;
+  border: none;
+}
+.player-volume-control input[type=range]:focus {
+  outline: none;
+}
+.player-volume-control input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3.1px;
+  cursor: pointer;
+  box-shadow: 0.2px 0.2px 1px rgba(0, 0, 0, 0.5), 0px 0px 0.2px rgba(13, 13, 13, 0.5);
+  background: #ffffff;
+  border-radius: 1px;
+  border: 0.2px solid #ffffff;
+}
+.player-volume-control input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #ffffff;
+  height: 18px;
+  width: 16px;
+  border-radius: 9px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.65px;
+}
+.player-volume-control input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ffffff;
+}
+.player-volume-control input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 3.1px;
+  cursor: pointer;
+  box-shadow: 0.2px 0.2px 1px rgba(0, 0, 0, 0.5), 0px 0px 0.2px rgba(13, 13, 13, 0.5);
+  background: #ffffff;
+  border-radius: 1px;
+  border: 0.2px solid #ffffff;
+}
+.player-volume-control input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #ffffff;
+  height: 18px;
+  width: 16px;
+  border-radius: 9px;
+  background: #ffffff;
+  cursor: pointer;
+}
+.player-volume-control input[type=range]::-ms-track {
+  width: 100%;
+  height: 3.1px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.player-volume-control input[type=range]::-ms-fill-lower {
+  background: #b5b5b5;
+  border: 0.2px solid #ffffff;
+  border-radius: 2px;
+  box-shadow: 0.2px 0.2px 1px rgba(0, 0, 0, 0.5), 0px 0px 0.2px rgba(13, 13, 13, 0.5);
+}
+.player-volume-control input[type=range]::-ms-fill-upper {
+  background: #ffffff;
+  border: 0.2px solid #ffffff;
+  border-radius: 2px;
+  box-shadow: 0.2px 0.2px 1px rgba(0, 0, 0, 0.5), 0px 0px 0.2px rgba(13, 13, 13, 0.5);
+}
+.player-volume-control input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #ffffff;
+  height: 18px;
+  width: 16px;
+  border-radius: 9px;
+  background: #ffffff;
+  cursor: pointer;
+  height: 3.1px;
+}
+.player-volume-control input[type=range]:focus::-ms-fill-lower {
+  background: #ffffff;
+}
+.player-volume-control input[type=range]:focus::-ms-fill-upper {
+  background: #ffffff;
+}

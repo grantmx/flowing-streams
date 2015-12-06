@@ -14,10 +14,13 @@
 
 <div class="grid station-header c">
 	<div class="span-1-1 light-box no-pad">
-		<img class="" ng-src="images/genre_{{currentStation.genre.title}}.svg">
-		<p class="color-gold station-details upperCase" ng-show="currentStation.station.station_name">
-			Now Playing
-			<span class="b color-white">{{currentStation.genre.title}} - {{currentStation.station.station_name}}</span>
+		<img class="hide-on-mobile" ng-src="images/genre_{{currentStation.genre.title}}.svg">
+		<p class="color-gold station-details upperCase large no-margin">
+			<span class="b large color-white show-on-mobile no-margin">{{currentStation.genre.title}}</span> 
+			<span class="break-on-mobile" ng-show="currentStation.station.station_name">Now Playing</span>
+			<span class="b color-white hide-on-mobile">{{currentStation.genre.title}}</span> 
+			<span class="hide-on-mobile b color-white" ng-show="currentStation.station.station_name">-</span> 
+			<span class="b color-white" ng-show="currentStation.station.station_name">{{currentStation.station.station_name}}</span>
 		</p>
 	</div>		
 </div>
