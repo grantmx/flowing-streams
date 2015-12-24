@@ -4,6 +4,18 @@ Documentation around the Prazor API rest services.
 ## Rest Services:
 
 ### Teaching
+Returns all partners:  `/rest/getPartners`
+```javascript
+[
+    {
+        title: "Test Teaching Partner",
+        entry_id: 10,
+        kaltura_playlist_url: "http://www.kaltura.com/api_v3/getFeed.php?partnerId=1949551&feedId=1_atji3zm1&format=1",
+        partner_thumbnail: "http://prazor.com//images/uploads/partners/CYL200Thumb.jpg",
+        partner_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet eros non sapien porta tempor sed vitae felis. Curabitur dictum libero at urna dignissim, eu fringilla turpis suscipit. Pellentesque neque nibh, bibendum consequat mattis sed, accumsan vitae quam. Praesent molestie rhoncus nisi sed viverra. "
+    }
+]
+```
 
 ### Talk
 
