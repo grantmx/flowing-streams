@@ -3,8 +3,52 @@ Documentation around the Prazor API rest services.
 
 ## Rest Services:
 
+### Teaching
+
+### Talk
+
+Returns all talk entries:  `/rest/getTalk`
+```javascript
+[
+    {
+        title: "Mike Huckabee & Terry Sacka",
+        entry_id: 11,
+        kaltura_playlist_url: "http://www.kaltura.com/api_v3/getFeed.php?partnerId=1949551&feedId=1_atji3zm1&format=1",
+        partner_thumbnail: "",
+        partner_description: ""
+    }
+]
+```
+
+Returns all talk entries in a given category:  `/rest/getTalk/category/1`
+
+```javascript
+[
+    {
+        title: "Mike Huckabee & Terry Sacka",
+        entry_id: 11,
+        kaltura_playlist_url: "http://www.kaltura.com/api_v3/getFeed.php?partnerId=1949551&feedId=1_atji3zm1&format=1",
+        partner_thumbnail: "",
+        partner_description: "",
+        categories: [
+            {
+                category_id: 1,
+                parent_id: 0,
+                category_name: "Politics",
+                category_image: "",
+                category_description: "",
+                category_group: "1",
+                category_url_title: "politics"
+            }
+        ]
+    }
+]
+```
+
+### Music
+
 Returns all Genres:  `/rest/getGenres`
-* example: http://prazor.com/index.php/rest/getGenres/
+* example: /rest/getGenres/
 
 ```javascript
 [
@@ -24,7 +68,7 @@ Returns all Genres:  `/rest/getGenres`
 ```
 
 Returns Genre Details and stations:  `/rest/getGenres/details/<ENTRY_ID>`
-* example: http://prazor.com/index.php/rest/getGenres/details/1
+* example: /rest/getGenres/details/1
 
 ```javascript
 [{
