@@ -4,6 +4,22 @@ Documentation around the Prazor API rest services.
 ## Rest Services:
 
 ### Teaching
+Returns all categories: `/rest/getTeachingCategories`
+```javascript
+{
+	"categories": [
+
+		{
+			"category_id": "4",
+			"category_name": "Family",
+			"category_image": "http://prazor.com/images/uploads/genre/dummy-239x179-Floral.jpg",
+			"category_desc": ""
+		},
+		...
+	]
+}
+```
+
 Returns all partners:  `/rest/getPartners`
 ```javascript
 [
@@ -18,6 +34,23 @@ Returns all partners:  `/rest/getPartners`
 ```
 
 ### Talk
+Returns all categories: `/rest/getTalkCategories`
+```javascript
+
+{
+	"categories": [
+
+		{
+			"category_id": "1",
+			"category_name": "Politics",
+			"category_image": "http://prazor.com/images/uploads/genre/dummy-239x179-Bottles.jpg",
+			"category_desc": ""
+		},
+		...
+	]
+}
+```
+
 
 Returns all talk entries:  `/rest/getTalk`
 ```javascript
