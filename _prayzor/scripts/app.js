@@ -111,7 +111,7 @@
 		
 		var config = {
 			method : 'GET',
-			url : 'http://prazor.com/index.php/rest/getGenres/'
+			url : 'http://prazor.com/rest/getGenres/'
 		}
 
 		dataService.getData(config).then(
@@ -158,7 +158,7 @@
 			var entryID = ($scope.currentStation.genre) ? $scope.currentStation.genre.entry_id : 1,
 				config = {
 				method : 'GET',
-				url : 'http://prazor.com/index.php/rest/getGenres/details/' + entryID
+				url : 'http://prazor.com/rest/getGenres/details/' + entryID
 			};
 
 			dataService.getData(config).then(
