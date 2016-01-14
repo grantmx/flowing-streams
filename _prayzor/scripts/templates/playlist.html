@@ -1,0 +1,9 @@
+
+<ul class="playlist-view no-margin">
+	<li class="playlist-view__item span-1-2-xs span-1-2-sm span-1-3-md span-1-4-lg c align-left" ng-repeat="item in playlist">
+		<a ng-click="playVideo(item.video)" class="playlist-view__item___link color-white light-box pad">
+			<img class="stretch bottom-space" ng-src="{{item.video.thumbnail_loc.__text}}">
+			<span class="playlist-view__item--eliples bold large no-margin block">{{item.video.title.__text}}</span>
+		</a>		
+	</li>
+</ul>

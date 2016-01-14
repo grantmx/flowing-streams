@@ -6,25 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/angular-carousel.css">
 	<link rel="stylesheet" type="text/css" href="css/player-volume-control.css">
+	<link rel="stylesheet" type="text/css" href="css/subNav.css">
 </head>
-<body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-{{playerView}} ">
+<body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-{{playerType}}">
 	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"'></div>		
 	<!-- ng-style="{'width': pageWidth, 'left': leftPos}"  -->
 	<div class="grid page-container no-pad" ng-show="!showSidebar">
 		<div class="span-1-1 no-pad" ng-include='"templates/header.html"'></div>
+		<div class="span-1-1 no-pad" ng-include='"templates/subNav.html"'></div>
 		<div class="span-1-1 no-pad" ng-class="{'playerMargin' : !hidePlayerBar}" ng-view></div>				
 	</div>
 
-	<div class="grid player-bar no-pad" ng-hide="hidePlayerBar">
-		<div class="station-info span-4-5-xs span-4-5-sm show-on-mobile no-pad" ng-include='"partials/stationInfo.html"'></div>
-		<div class="span-1-1 player-subtitle top-space show-on-mobile">
-			<p class="color-white large c">
-				<span class="b">{{currentStation.station.station_information}}</span>
-			</p>
-		</div>
-		<div class="player-container span-1-5-xs span-1-5-sm span-1-3-md no-pad" ng-include='"partials/player-controls.html"'></div>
-		<div class="station-details span-2-3-md hide-on-mobile no-pad" ng-include='"partials/stationDetails.html"'></div>
-	</div>
+	<audio-playerbar data-currentStation="currentStation"></audio-playerbar>
 	
 	<!-- Vendor: Javascripts -->
 	<script src="scripts/jquery.min.js"></script>
@@ -34,12 +27,21 @@
 	<script src="scripts/angular-route.min.js"></script>
 	<script src="scripts/angular-touch.min.js"></script>
 	<script src="scripts/angular-carousel.min.js"></script>
-	<script src="scripts/angular-audio.js"></script>
-	<!-- JW Player 
-	​<script src="scripts/widgets/jwplayer/jwplayer.js" ></script>
-	<script>jwplayer.key="5Kb4HAwQS98FwlTNHg5Z2/pLFBgd6IH9Z9jlWg==";</script>
-	-->
+
 	<!-- Our Website Javascripts -->
 	<script src="scripts/app.js"></script>
+	<script src="scripts/services/xml2json.min.js"></script>
+	<script src="scripts/services/dataService.js"></script>
+	<script src="scripts/controllers/MainController.js"></script>
+	<script src="scripts/modules/genres/controller/GenreController.js"></script>
+	<script src="scripts/modules/stations/controller/StationController.js"></script>
+	<script src="scripts/modules/teaching/controller/TeachingController.js"></script>
+	<script src="scripts/modules/teaching/controller/TeachingCategoriesController.js"></script>
+	<script src="scripts/modules/talk/controller/TalkCategoriesController.js"></script>
+	<script src="scripts/modules/talk/controller/TalkController.js"></script>
+	<script src="scripts/controllers/PlaylistController.js"></script>
+	<script src="scripts/controllers/VideoController.js"></script>
+	<script src="scripts/modules/pageError/controller/PageErrorController.js"></script>
+	<script src="scripts/directives/audioPlayerBar/audioPlayerBar.js"></script>	
 </body>
 </html>

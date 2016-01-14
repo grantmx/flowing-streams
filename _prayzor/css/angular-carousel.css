@@ -2,7 +2,7 @@ input[type=range] {
   width: 300px; }
 
 ul[rn-carousel] {
-  overflow: hidden;
+  overflow: visible !important;
   padding: 0;
   white-space: nowrap;
   position: relative;
@@ -31,7 +31,7 @@ ul[rn-carousel] {
 
 /* prevent flickering when moving buffer */
 ul[rn-carousel-buffered] > li {
-  display: none; }
+  display: block; }
 
 ul[rn-carousel-transition="hexagon"] {
   overflow: visible; }

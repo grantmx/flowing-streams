@@ -1,0 +1,21 @@
+.sub-nav {
+    list-style: none;
+    margin: 0;
+}
+.sub-nav__item {
+    display: inline;
+    align-self:center;
+}
+.sub-nav__link {
+    padding: 1.5em;
+    background: rgba(255,255,255, 0.1);
+    display: block;
+    color: #fff;
+    font-size: 2em;
+}
+.sub-nav__link--active, .sub-nav__link:hover {
+    background: rgba(255,255,255, 0.2);
+}
+.sub-nav__link--border-left{
+	border-left: solid 1px rgba(255,255,255, 0.2);
+}
