@@ -9,6 +9,9 @@
 // Get the credit card details submitted by the form
 $token = $_POST['stripeToken'];
 
+// Temporary //
+$post  = $_POST;
+
 // Create a Customer
 $customer = \Stripe\Customer::create(array(
   "source" => $token,
@@ -16,7 +19,7 @@ $customer = \Stripe\Customer::create(array(
 );
 
 // Charge the Customer instead of the card
-\Stripe\Charge::create(array(
+$chargeResponse = \Stripe\Charge::create(array(
   "amount" => 1000, // amount in cents, again
   "currency" => "usd",
   "customer" => $customer->id)
@@ -116,8 +119,8 @@ label{
 		<p class="no-margin">
 			<img class="donate-icon" src="https://www.prazor.com/images/heart_icon.svg">
 			<span class="color-white xl">Donate</span>
-		</p>	
-		
+		</p>
+
 	</div>
 </div>
 
@@ -125,14 +128,18 @@ label{
 	<div class="grid ng-scope">
 		<div class="span-1-1 no-pad">
 			<p class="payment-errors"></p>
-
+        <?php echo '<pre>';
+              // var_dump();
+			  echo $chargeResponse->amount;
+              echo '</pre>';
+              ?>
 			<div class="user-info">
 				<h1>Thanks!</h1>
-			</div>	
+			</div>
 		</div>
 	</div>
 </form>
-	
+
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 </body>

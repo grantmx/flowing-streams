@@ -62,22 +62,31 @@ label{
     padding-left: 20px;
     line-height: 1;
 }
+.normal{ font-size: 2.4rem }
 </style>
 
 
 </head>
 <body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-small">
-
 <div class="grid ng-scope">
-	<div class="span-1-1 c no-pad top-space">
-		<img class="user-avatar" ng-src="https://www.prazor.com/images/heart_icon.svg" src="images/heart_icon.svg">		
+	<div class="span-1-1 c top-space no-pad">
+		<div class="span-1-6">
+			<p><a href="http://www.prazor.com/"><img src="/images/back_arrow_icon.svg" style="width:75%"></a></p>
+		</div>
+		<div class="span-4-6 no-pad">
+			<a href="http://www.prazor.com/">
+				<img src="https://www.prazor.com/images/logo.svg" style="height:60px">
+			</a>
+		</div>
+		<div class="span-1-6">&nbsp;</div>
 	</div>
+
 	<div class="span-1-1 c large no-pad no-margin">
-		<span class="b color-white large">Donate</span>
+		<p class="b color-white">Like what you hear?<br>Donate to keep this ministry going. </p>
 	</div>
 </div>
 
-<form action="" method="POST" id="donateForm" novalidate autocomplete="on">
+<form action="charge.php" method="POST" id="donateForm" novalidate autocomplete="on">
 	<span class="payment-errors"></span>
 
 	<div class="grid ng-scope">
@@ -85,8 +94,20 @@ label{
 			<div class="user-info">
 				<ul class="blocked unstyled vertical-list large">
 					<li>
-						<input type="text" class="input-field" size="20" placeholder="">
-						<label class="color-gold b">Full Name</label>
+						<input type="number" class="input-field" size="20" placeholder="$" name="amount" data-stripe="amount">
+						<label class="color-gold b">Donation Amount</label>
+					</li>
+					<li>
+						<input type="text" class="input-field" size="20" placeholder="" data-stripe="first_name">
+						<label class="color-gold b">First Name</label>
+					</li>
+					<li>
+						<input type="text" class="input-field" size="20" placeholder="" data-stripe="last_name">
+						<label class="color-gold b">Last Name</label>
+					</li>
+					<li>
+						<input type="email" class="input-field" size="" placeholder="" data-stripe="email">
+						<label class="color-gold b">Email Address</label>
 					</li>
 					<li>
 						<input type="tel" class="input-field cc-number" data-numeric size="20" placeholder="&middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot;" data-stripe="number">
@@ -97,8 +118,11 @@ label{
 						<label class="color-gold b cc-cvc">CCV Number</label>
 					</li>
 					<li>
-						<input type="text" class="input-field input-short cc-exp" size="20" placeholder="&middot;&middot; / &middot;&middot;" data-stripe="exp-month">
+						<input type="text" class="input-field input-short cc-exp" size="20" placeholder="&middot;&middot; / &middot;&middot;" data-stripe="exp">
 						<label class="color-gold b">Expiration Date</label>
+					</li>
+					<li>
+						<label class="color-gold b"> <input type="checkbox" class="" name="reoccurring" data-stripe="reoccurring">Make this a recurring monthly gift</label>
 					</li>	
 					<li>
 						<button class="btn large-btn btn-first full-width-btn">Submit</button>

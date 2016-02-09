@@ -1,0 +1,17 @@
+<ul class="grid view-stations">
+	<li class="span-1-1-xs span-1-1-sm span-1-3-md span-1-4-lg c" ng-repeat="station in stations track by $index">
+		<a class="span-1-6-xs span-1-6-sm span-1-1-md show-on-mobile no-pad" ng-click="audioPlayer(station)">
+			<img class="flex-img" ng-src="{{station.station_image}}">
+		</a>
+		<a class="span-4-6-xs span-4-6-sm span-1-1-md light-box show-on-mobile station-name" ng-click="audioPlayer(station, $index)">
+			<span class="upperCase color-white b large">{{station.station_name}}</span>					
+		</a>
+		<a class="span-1-6-xs span-1-6-sm span-1-1-md light-box no-pad" ng-click="playStation(station, $index)">
+			<img class="hide-on-mobile flex-img" ng-src="{{station.station_image}}">
+			<span class="speaker-bar block">
+				<img src="images/listen_icon.svg">
+			</span>
+			
+		</a>		
+	</li>
+</ul>

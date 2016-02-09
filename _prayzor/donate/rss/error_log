@@ -1,0 +1,17 @@
+[02-Feb-2016 16:09:57 UTC] PHP Warning:  Illegal string offset 'ResponseObject' in /home/prazorgator/public_html/donate/rss/index.php on line 44
+[02-Feb-2016 16:09:57 UTC] PHP Warning:  Illegal string offset 'Logs' in /home/prazorgator/public_html/donate/rss/index.php on line 44
+[02-Feb-2016 16:11:03 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/prazorgator/public_html/donate/rss/index.php on line 44
+[02-Feb-2016 16:11:31 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/prazorgator/public_html/donate/rss/index.php on line 44
+[02-Feb-2016 16:11:33 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/prazorgator/public_html/donate/rss/index.php on line 44
+[04-Feb-2016 19:32:25 UTC] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/prazorgator/public_html/donate/rss/index.php on line 50
+[04-Feb-2016 19:50:02 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /home/prazorgator/public_html/donate/rss/index.php on line 64
+[04-Feb-2016 19:56:40 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /home/prazorgator/public_html/donate/rss/index.php on line 66
+[04-Feb-2016 19:57:50 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /home/prazorgator/public_html/donate/rss/index.php on line 67
+[04-Feb-2016 20:49:20 UTC] PHP Parse error:  syntax error, unexpected '$lineArray' (T_VARIABLE) in /home/prazorgator/public_html/donate/rss/index.php on line 58
+[04-Feb-2016 21:08:54 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/prazorgator/public_html/donate/rss/index.php on line 88
+[04-Feb-2016 21:09:26 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/prazorgator/public_html/donate/rss/index.php on line 91
+[04-Feb-2016 21:09:55 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/prazorgator/public_html/donate/rss/index.php on line 93
+[04-Feb-2016 21:10:32 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/prazorgator/public_html/donate/rss/index.php on line 99
+[04-Feb-2016 21:10:33 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/prazorgator/public_html/donate/rss/index.php on line 99
+[04-Feb-2016 21:41:40 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/prazorgator/public_html/donate/rss/index.php on line 98
+[04-Feb-2016 21:41:58 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/prazorgator/public_html/donate/rss/index.php on line 108

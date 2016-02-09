@@ -1,0 +1,7 @@
+<ul rn-carousel rn-carousel-transition="hexagon"  rn-carousel-index="currentStation.$index" rn-carousel-buffered class="view-carousel">
+	<li class="c" ng-repeat="station in currentStation.stations track by $index">
+		<a ng-click="playStation(station)">
+			<img class="flex-img" alt="{{station.station_name}}" ng-src="{{station.station_image}}">
+		</a>		
+	</li>
+</ul>

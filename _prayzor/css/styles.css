@@ -1,6 +1,10 @@
 body{
 	overflow-x:hidden;
 	background:rgba(0, 0, 0, 10) url("../images/background-lg.jpg") no-repeat right top;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 a{
 	text-decoration: none;
@@ -68,6 +72,7 @@ ul > li{
 	background: rgba(255,255,255, 0.2);
 	display: block;	
 }
+
 .white-border-box {
     border: 1px solid #fff;
     padding: 5px;

@@ -1,4 +1,4 @@
-
+// (function(){
 	var app = angular.module('app', [
 	  'ngRoute', 'ngTouch', 'angular-carousel'
 	]);
@@ -23,19 +23,4 @@
 		.when("/404", {templateUrl: "scripts/modules/pageError/views/404.html", controller: 'PageErrorController'})
 		.otherwise({redirectTo:'/404'});
 	}]);
-
-
-app.initialize = function() {
-	this.bindEvents();
-};
-    
-app.bindEvents = function() {
-	document.addEventListener('deviceready', this.onDeviceReady, true);
-};
-
-app.onDeviceReady = function() {
-	angular.element(document).ready(function() {
-		angular.bootstrap(document);
-	});
-};
-
+// })();
