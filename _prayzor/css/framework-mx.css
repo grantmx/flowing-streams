@@ -927,6 +927,9 @@ a:hover, a:focus {
   font-weight: bold;
 }
 
+.xs{
+  font-size: .5em;
+}
 .mini {
   font: 1.1em/1.7em Helvetica, Arial, sans-serif;
 }
@@ -1067,6 +1070,9 @@ ul.unstyled.vertical-list li {
 
 .align-center {
   margin: 0 auto;
+}
+.align-self-center{
+  align-self:center;
 }
 
 .clearfix {

@@ -19,13 +19,25 @@ ul > li{
 	margin: 0 auto;
 	height: 100%;
 }
-.page-sidebar{
-	overflow-x:hidden;
-	background:rgba(0, 0, 0, 10) url("../images/background-lg.jpg") no-repeat left top;
+
+
+
+.openSideBar {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    min-width: 100%;
+    background: rgba(0, 0, 0, 10) url("../images/background-lg.jpg") no-repeat right top;
+    box-shadow: 0px 0px 10px 0px #000;
+    height: auto;
 }
 
-.playerMargin{
-	margin-bottom: 80px;
+.playerMargin {
+    margin-bottom: 85px;
+}
+
+.content{
+	min-height: 300px;
 }
 /*logo*/
 .logo img{
@@ -72,7 +84,6 @@ ul > li{
 	background: rgba(255,255,255, 0.2);
 	display: block;	
 }
-
 .white-border-box {
     border: 1px solid #fff;
     padding: 5px;
@@ -123,7 +134,15 @@ nav{
 }
 .station-info__name{
 	font-size: 1.5em;
-	margin-top: .25em;
+	line-height: 3em;
+}
+.station-songBar{
+	background-color: rgba(0,0,0, 0.7);
+	z-index: 10;
+	position: fixed;
+}
+.station-songBar__info{
+	font-size: .75em;
 }
 
 /*Player Bar*/
@@ -256,6 +275,10 @@ ul[rn-carousel] {
     position: absolute;
     top: 19%;
 }
+
+.player-view-large footer{
+	display: none;
+}
 @media only screen and (min-device-width: 768px) {
 	
 }
@@ -341,10 +364,26 @@ ul[rn-carousel] {
 		height: auto
 	}
 	.player-view-large .previous, .player-view-large .forward{
-		margin-top: 2em;
+		line-height:5em;
+	}
+	.player-play-pause{
+		width: 100%;
 	}
 
+	.player-bar{
+		height: 85px;
+	}
+	.player-view-large .player-bar{
+    	height: 30%;
+	}
 	
+	.station-songBar{		
+	    bottom: 85px;
+	}
+	.player-view-large .station-songBar{
+	    bottom: 0;
+	}
+
 }
 /*Tablet*/
 @media only screen and (min-device-width : 768px) {
@@ -382,6 +421,13 @@ ul[rn-carousel] {
 	} 	
 	.player-controls .forward, .player-controls .previous{
 		margin-top: 1em;
+	}
+	.player-bar{
+		height: 100px;
+	}
+	.station-songBar{
+		bottom: 100px;
+		padding: .5em;
 	}
 }
 

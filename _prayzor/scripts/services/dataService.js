@@ -26,6 +26,33 @@
 			
 			return deferred.promise;
 		};
+
+		this.getPlaylistDetails = function(config){
+			var deferred = $q.defer();
+
+			$http({
+				method: config.method,
+				url: config.url,
+				cache: false,
+				headers: {
+					'Content-Type': 'text/plain'
+				}
+			})
+			.then(					
+					function(response) {
+						if(response.data){
+							deferred.resolve(response);
+						}
+						else{
+							deferred.reject('Error Fetching Data');
+						}
+					}, 
+					function(error) {
+						deferred.reject(error);
+					});
+
+			return deferred.promise;
+		}
 		
 	}]);
 
