@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
+	<title>Prazor</title>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<meta name="viewport" content="width=device-width">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
@@ -17,7 +18,8 @@
 	<div class="grid page-container no-pad" ng-show="!showSidebar">
 		<div class="span-1-1 no-pad" ng-include='"templates/header.html"'></div>
 		<div class="span-1-1 no-pad" ng-include='"templates/subNav.html"'></div>
-		<div class="span-1-1 no-pad" ng-class="{'playerMargin' : !hidePlayerBar}" ng-view ng-cloak></div>						
+		<div class="span-1-1 no-pad" ng-class="{'playerMargin' : !hidePlayerBar}" ng-view ng-cloak style="min-height:{{windowHeight}}px"></div>
+		<div class="span-1-1 no-pad" ng-include='"templates/footer.html"'></div>						
 	</div>
 	<audio-playerbar data-currentStation="currentStation"></audio-playerbar>
 	
@@ -48,8 +50,5 @@
 	<script src="scripts/modules/pageError/controller/PageErrorController.js"></script>
 	<script src="scripts/directives/audioPlayerBar/audioPlayerBar.js"></script>
 
-	<script>
-        app.initialize();
-    </script>
 </body>
 </html>
