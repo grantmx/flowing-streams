@@ -14,7 +14,6 @@
 			DataSource.get(config).then(
 				function(response){
 					$scope.playlist = response.urlset.url;
-					console.log($scope.playlist);
 				},function(error){
 					console.log(error);
 					$scope.error = error;
@@ -24,8 +23,11 @@
 
 		$scope.playVideo = function(video){
 			console.log(video);
+			var location = $location.url(),
+				currentLocation = location.slice(1).split('/')[0];
 			$scope.$parent.currentCategory.video = video;
-			$location.url('talk/video');
+			$scope.$parent.currentCategory.playlist = $scope.playlist;
+			$location.url(currentLocation + '/video');
 		};
 	}]);
 })();

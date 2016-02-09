@@ -2,21 +2,23 @@
 <html ng-app="app">
 <head>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="css/framework-mx.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/angular-carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
 	<link rel="stylesheet" type="text/css" href="css/player-volume-control.css">
 	<link rel="stylesheet" type="text/css" href="css/subNav.css">
 </head>
 <body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-{{playerType}}">
-	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"'></div>		
+	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"' style="height:{{windowHeight}}px"></div>		
 	<!-- ng-style="{'width': pageWidth, 'left': leftPos}"  -->
 	<div class="grid page-container no-pad" ng-show="!showSidebar">
 		<div class="span-1-1 no-pad" ng-include='"templates/header.html"'></div>
 		<div class="span-1-1 no-pad" ng-include='"templates/subNav.html"'></div>
-		<div class="span-1-1 no-pad" ng-class="{'playerMargin' : !hidePlayerBar}" ng-view></div>				
+		<div class="span-1-1 no-pad" ng-class="{'playerMargin' : !hidePlayerBar}" ng-view ng-cloak></div>						
 	</div>
-
 	<audio-playerbar data-currentStation="currentStation"></audio-playerbar>
 	
 	<!-- Vendor: Javascripts -->
@@ -27,6 +29,8 @@
 	<script src="scripts/angular-route.min.js"></script>
 	<script src="scripts/angular-touch.min.js"></script>
 	<script src="scripts/angular-carousel.min.js"></script>
+	<script src="scripts/slick.min.js"></script>
+	<script src="http://cdnapi.kaltura.com/p/1949551/sp/194955100/embedIframeJs/uiconf_id/30806841/partner_id/1949551"></script>
 
 	<!-- Our Website Javascripts -->
 	<script src="scripts/app.js"></script>
@@ -42,6 +46,10 @@
 	<script src="scripts/controllers/PlaylistController.js"></script>
 	<script src="scripts/controllers/VideoController.js"></script>
 	<script src="scripts/modules/pageError/controller/PageErrorController.js"></script>
-	<script src="scripts/directives/audioPlayerBar/audioPlayerBar.js"></script>	
+	<script src="scripts/directives/audioPlayerBar/audioPlayerBar.js"></script>
+
+	<script>
+        app.initialize();
+    </script>
 </body>
 </html>

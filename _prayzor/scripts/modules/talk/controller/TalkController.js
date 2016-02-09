@@ -14,8 +14,7 @@
 
 			dataService.getData(config).then(
 				function(response){
-					$scope.data= response.data;
-					console.log($scope.data);
+					$scope.data = response.data;
 				},function(error){
 					console.log(error);
 				});	

@@ -12,7 +12,16 @@
 				$location.url('music/audioplayer');
 			}
 			setStation(details);
+			setToListenState();
+			station.state = 'play';
 		};
+
+		function setToListenState(){
+			$.each($scope.stations, function(i){					
+					$scope.stations[i].state = 'listen';
+				});
+		}
+		
 
 		function setStation(details){
 			$scope.currentStation.station = details.station;
@@ -35,6 +44,8 @@
 				dataService.getData(config).then(
 					function(response){
 						$scope.stations = response.data[0].stations;
+						//Set Station State to listen on load
+						setToListenState();
 						console.log($scope.stations);
 					},function(error){
 						console.log(error);

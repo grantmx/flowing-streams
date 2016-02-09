@@ -15,7 +15,6 @@
 			dataService.getData(config).then(
 				function(response){
 					$scope.data = response.data;
-					console.log($scope.data);
 				},function(error){
 					console.log(error);
 				});	
@@ -24,7 +23,6 @@
 
 		$scope.setItem = function(teaching){
 			$scope.$parent.currentCategory.subCategory = teaching;
-			console.log(teaching);
 			$location.url('teaching/playlist');			
 		};
 	}]);

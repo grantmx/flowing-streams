@@ -86,8 +86,6 @@
 				}
 
 				function playAudio(station){
-					var volume = .5;
-
 					if(!scope.audio){
 						scope.audio = document.createElement("audio");
 					}					
@@ -98,6 +96,35 @@
 
 					scope.playing = true;
 					setPlayPauseBtn(scope.playing);
+
+
+					// jwAudio
+					// if(!scope.audio){
+						
+					// 	scope.audio = jwplayer("audioPlayer");
+					// 	scope.audio.setup({
+					// 	      file: "http://" + station.station_domain + ".securenetsystems.net/" + station.station_id,
+					// 	      height: 15,
+					// 	      width: 'auto'
+					// 	});
+					// }
+					// scope.audio.load(); //load the new source
+					// scope.audio.play(); //play
+
+					// scope.playing = true;
+					// setPlayPauseBtn(scope.playing);
+
+					// ngAudio
+					// if(scope.audio){			
+					// 	scope.audio.stop();
+					// 	scope.audio.unbind();
+					// }
+					// scope.audio = ngAudio.load("http://" + station.station_domain + ".securenetsystems.net/" + station.station_id); // returns NgAudioObject
+					// scope.audio.play();
+					// scope.playing = true;
+					// setPlayPauseBtn(scope.playing);
+
+					console.log("http://" + station.station_domain + ".securenetsystems.net/" + station.station_id);
 				}
 
 				function setStationDetails(index, currentStation){

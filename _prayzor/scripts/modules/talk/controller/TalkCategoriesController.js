@@ -10,13 +10,11 @@
 		dataService.getData(config).then(
 			function(response){
 				$scope.categories = response.data.categories;
-				console.log($scope.categories);
 			},function(error){
 				console.log(error);
 			});	
 
 		$scope.setCategory = function(category){
-			console.log(category);
 			$scope.$emit('stopAudio');
 			$scope.$parent.currentCategory = category;
 			$location.url('talk/talk');

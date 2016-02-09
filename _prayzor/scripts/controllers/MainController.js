@@ -5,16 +5,13 @@
 		$scope.currentStation = {};
 		$scope.currentCategory = {};
 		$scope.stopAudio = false;
+		$scope.windowHeight = $( window ).height();
 		
 		$scope.$on('$routeChangeStart', function(next, current) {		   
-		   	var currenlocation = $location.url();
-		   	console.log('Route Changed: ', currenlocation.slice(1).split('/')[1]);
-		   
-		   	$scope.activeSubNav = currenlocation.slice(1).split('/')[0];
-		   	
+		   	var currenlocation = $location.url();		   
+		   	$scope.activeSubNav = currenlocation.slice(1).split('/')[0];		   	
 		   	$scope.quickMenuItem = (currenlocation.slice(1).split('/')[1] && currenlocation.slice(1).split('/')[1] !== 'genres') ? 'back_arrow' : 'menu';
-
-		   	$scope.playerType = ($scope.menuItem === 'audioplayer') ? 'large' : 'small';
+		   	$scope.playerType = (currenlocation.slice(1).split('/')[1] === 'audioplayer') ? 'large' : 'small';
 
 		    if (typeof(current) !== 'undefined'){
 	            $templateCache.remove(current.templateUrl);
