@@ -1,9 +1,9 @@
 <div class="span-1-1 station-songBar" ng-show="currentStation.station.song.title" ng-hide="hidePlayerBar">
 	<p class="color-white station-songBar__info no-margin">
 		<marquee>
-			<span ng-show="currentStation.station.song.title" class="b">{{currentStation.station.song.title}}, </span>
-			<span ng-show="currentStation.station.song.artist">By - {{currentStation.station.song.artist}}, </span>
-			<span ng-show="currentStation.station.song.album">Album: {{currentStation.station.song.album}} </span>						
+			<span ng-show="currentStation.station.song.title" class="b" ng-bind-html="currentStation.station.song.title"></span>, 
+			By - <span ng-show="currentStation.station.song.artist" ng-bind-html="currentStation.station.song.artist"></span>, 
+			Album: <span ng-show="currentStation.station.song.album" ng-bind-html="currentStation.station.song.album"></span>
 		</marquee>
 	</p>
 </div>

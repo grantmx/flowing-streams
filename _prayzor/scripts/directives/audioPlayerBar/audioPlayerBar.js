@@ -1,5 +1,5 @@
 (function(){
-	app.directive('audioPlayerbar', ['dataService', '$timeout', function(dataService, $timeout){
+	app.directive('audioPlayerbar', ['$sce', 'dataService', '$timeout', function ($sce, dataService, $timeout){
 		return {
 			restrict: 'E',
 			templateUrl: 'scripts/directives/audioPlayerBar/view/audioPlayerBar.html',
@@ -82,18 +82,34 @@
 					scope.playPauseBtn = (!isPlaying) ? 'play' : 'pause';
 				}
 
-				function playAudio(station){
+
+
+				function playAudio (station){
+					dataService
+						.getM3U(station.station_id)
+						.then(buildPlayer);
+				}
+
+
+				// builds the player
+				function buildPlayer (source){
+					var source = M3U.parse(response.data)
+					
+					source = source[0].file
+
 					if(!scope.audio){
 						scope.audio = document.createElement("audio");
 					}					
 
-					scope.audio.setAttribute('src', "http://" + station.station_domain + ".securenetsystems.net/" + station.station_id); //change the source
+					scope.audio.setAttribute('src', source); //change the source
 					scope.audio.load(); //load the new source
 					scope.audio.play(); //play
 
 					scope.playing = true;
-					setPlayPauseBtn(scope.playing);					
+					setPlayPauseBtn(scope.playing);
 				}
+
+
 
 				function setStationDetails(index, currentStation){
 					var details = {};

@@ -27,6 +27,21 @@
 			return deferred.promise;
 		};
 
+
+
+		// fetches the m3u file to fetch the audio stream
+		this.getM3U = function(station){
+			var promise = $http({
+					method: "GET",
+					url: "http://prazor.com/streams/" + station +".m3u",
+					headers: { 'Content-Type': 'audio/x-mpegurl' },
+				});
+
+			return promise;
+		};
+
+
+
 		this.getPlaylistDetails = function(config){
 			var deferred = $q.defer();
 

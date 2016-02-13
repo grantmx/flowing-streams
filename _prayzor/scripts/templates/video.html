@@ -15,7 +15,7 @@
 		<a href="" class="video__link c">Link</a>
 	</div> -->
 	<div class="span-1-1">
-		<p class="color-white">{{video.description.__text}}</p>
+		<p class="color-white" ng-bind-html="video.description.__text"></p>
 	</div>
 
 	<div class="span-1-1 scrollable--bg">
@@ -23,7 +23,7 @@
 			<li class="scrollable__item c pad" ng-repeat="item in playlist track by $index">
 				<a href="" ng-click="playVideo(item.video)" class="light-box c">
 					<img class="stretch" alt="{{item.video.title.__text}}" ng-src="{{item.video.thumbnail_loc.__text}}">
-					<span class="color-white scrollable__item__title--eliples">{{item.video.title.__text}}</span>
+					<span class="color-white scrollable__item__title--eliples" ng-bind-html="item.video.title.__text"></span>
 				</a>		
 			</li>
 		</ul>

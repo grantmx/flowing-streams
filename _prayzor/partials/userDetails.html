@@ -1,26 +1,28 @@
 <div class="grid">
-	<div class="span-1-1 c">
-		<img class="user-avatar" ng-src="images/heart_icon.svg">		
-	</div>
-	<div class="span-1-1 c">
-		<span class="b color-white">{{user.fName}} {{user.lName}}</span>
+	<div class="span-1-1 c no-pad">
+		<div class="span-1-6">
+			<p><a href="" ng-click="quickMenu('genres')" class="icon-menu"><img src="images/back_arrow_icon.svg"></a></p>
+		</div>
+		<div class="span-4-6 no-pad">
+			<a class="logo"><img src="images/logo.svg"></a>
+		</div>
+		<div class="span-1-6">&nbsp;</div>
 	</div>
 </div>
+
+
 <div class="grid">
 	<div class="span-1-1">
 		<div class="user-info">
 			<ul class="blocked unstyled vertical-list">
 				<li>
-					<span class="block color-white bottom-line light-grey-line">Donations</span>
-					<span class="color-gold b">Lorem Ipsum Sit Amet</span>
+					<a href="https://donate.prazor.com/" target="_blank" class="block color-white sideBarLinks" onclick="window.open(this.href,'_system'); return false;">Donations</a>
 				</li>
 				<li>
-					<span class="block color-white bottom-line light-grey-line">Account Information</span>
-					<span class="color-gold b">Update Username/Password</span>
+					<a class="block color-white sideBarLinks" href="mailto:support@prazor.com" onclick="window.open(this.href,'_system'); return false;">Feedback</a>
 				</li>
 				<li>
-					<span class="block color-white bottom-line light-grey-line">Feedback</span>	
-					<span class="color-gold b">Report a Problem</span>
+					<a class="block color-white sideBarLinks" href="http://prazor.com/terms" onclick="window.open(this.href,'_system'); return false;">Terms of Use</a>
 				</li>
 			</ul>
 		</div>	
