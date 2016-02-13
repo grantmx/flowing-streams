@@ -286,9 +286,7 @@ ul[rn-carousel] {
 .player-view-large footer{
 	display: none;
 }
-@media only screen and (min-device-width: 768px) {
-	
-}
+
 
 .scrollableX {
     overflow-x: scroll;
@@ -304,7 +302,7 @@ ul[rn-carousel] {
     top: 60px;
 }
 /*Mobile*/
-@media only screen and (max-device-width: 767px) {
+@media only screen and (max-width: 767px) {
 	
 	.hide-on-mobile{display: none;}
 	/* page-sidebar Menu Styles */
@@ -393,7 +391,7 @@ ul[rn-carousel] {
 
 }
 /*Tablet*/
-@media only screen and (min-device-width : 768px) {
+@media only screen and (min-width : 768px) {
 	.page-sidebar{display: none;}
 	.icon-menu img, .icon-heart img{
 		margin-top: .5em
@@ -439,7 +437,7 @@ ul[rn-carousel] {
 }
 
 /*Desktop*/
-@media only screen and (min-device-width: 1025px){
+@media only screen and (min-width: 1025px){
 	.slick-prev {
 		display: block !important;
 	}

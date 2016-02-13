@@ -254,7 +254,7 @@ hr {
   width: 100%;
 }
 
-@media only screen and (min-device-width: 320px) {
+@media only screen and (min-width: 320px) {
   .span-1-1-xs {
     width: 100%;
   }
@@ -379,7 +379,7 @@ hr {
     width: 100%;
   }
 }
-@media only screen and (min-device-width: 568px) {
+@media only screen and (min-width: 568px) {
   .span-1-1-sm {
     width: 100%;
   }
@@ -504,7 +504,7 @@ hr {
     width: 100%;
   }
 }
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   body{
     font-size: 2em;
   }  
@@ -635,7 +635,7 @@ hr {
     width: 100%;
   }
 }
-@media only screen and (min-device-width: 1020px) {
+@media only screen and (min-width: 1020px) {
   .span-1-1-lg {
     width: 100%;
   }
