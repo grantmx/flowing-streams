@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+	<meta http-equiv='cleartype' content='on'>
+	<meta charset='utf-8'>
+
 	<title>Prazor</title>
-	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	<meta name="viewport" content="width=device-width">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+
+	<meta name='apple-mobile-web-app-capable' content='yes'>
+	<meta name='apple-mobile-web-app-status-bar-style' content='black'>
+	<meta name='HandheldFriendly' content='True'>
+	<meta name='MobileOptimized' content='320'>
+
 	<link rel="stylesheet" type="text/css" href="css/framework-mx.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/angular-carousel.css">
 	<link rel="stylesheet" type="text/css" href="css/slick.css">
 	<link rel="stylesheet" type="text/css" href="css/player-volume-control.css">
 	<link rel="stylesheet" type="text/css" href="css/subNav.css">
+
+	<link rel='apple-touch-icon' href='images/icon/ios/120x120.png' />
+	<link rel='apple-touch-icon' sizes='57x57' href='images/icon/ios/57x57.png' />
+	<link rel='apple-touch-icon' sizes='76x76' href='images/icon/ios/76x76.png' />
+	<link rel='apple-touch-icon' sizes='152x152' href='images/icon/ios/152x152.png' />
+	<link rel='apple-touch-icon' sizes='144x144' href='images/icon/ios/144x144.png' />
+	<link rel='shortcut icon' href='images/icon/ios/57x57.png'>
 </head>
 <body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-{{playerType}}">
 	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"'></div>		
