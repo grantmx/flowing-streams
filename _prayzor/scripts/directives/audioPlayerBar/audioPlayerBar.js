@@ -24,7 +24,7 @@
 					scope.hidePlayerBar = false;
 
 
-					getStationDetails(scope.currentStation.station);
+					getStationPlaylistDetails(scope.currentStation.station);
 				}
 
 				function getCurrentSongDetails(data){
@@ -48,13 +48,13 @@
 						if(timeout > 0){
 							$timeout.cancel(timer);
 							timer = $timeout(function() {
-			                    getStationDetails(scope.currentStation.station);
+			                    getStationPlaylistDetails(scope.currentStation.station);
 			                }, timeout);
 						}
 						else{
 							$timeout.cancel(timer);
 							timer = $timeout(function() {
-			                    getStationDetails(scope.currentStation.station);
+			                    getStationPlaylistDetails(scope.currentStation.station);
 			                }, 5000);
 						}
 						
@@ -62,7 +62,7 @@
 
 				}
 
-				function getStationDetails(station){
+				function getStationPlaylistDetails(station){
 					// Call to get Playlist details
 					var config = {
 						method : 'GET',
@@ -93,7 +93,7 @@
 
 				// builds the player
 				function buildPlayer (source){
-					var source = M3U.parse(response.data)
+					var source = M3U.parse(source.data)
 					
 					source = source[0].file
 
@@ -124,6 +124,9 @@
 					scope.playing = false;
 					setPlayPauseBtn(scope.playing);
 					scope.hidePlayerBar = true;
+					$timeout.cancel(timer);
+					scope.currentStation = {};
+					scope.$parent.currentStation = {};
 				}
 				
 				scope.currentStation = {};
@@ -179,7 +182,7 @@
 
 				scope.$on('stoppingAudio', function(model, oldModel){
 					if(scope.audio){
-						stopAudio();
+						stopAudio();						
 					}						
 				});
 			}
