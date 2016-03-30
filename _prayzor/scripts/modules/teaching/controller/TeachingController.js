@@ -1,12 +1,13 @@
 (function(){
-	app.controller('TeachingController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
+	app.controller('TeachingController', ['$scope', '$location', 'dataService', 'DataFactory', 
+		function($scope, $location, dataService, DataFactory){
 		$scope.error = '';
 
-		if($scope.$parent.currentCategory.category_id === undefined){
-			$location.url('talk');
+		if(DataFactory.currentCategory.category_id === undefined){
+			$location.url('teaching');
 		}
 		else{
-			$scope.category = $.extend(true, {}, $scope.$parent.currentCategory);
+			$scope.category = $.extend(true, {}, DataFactory.currentCategory);
 			var config = {
 				method : 'GET',
 				url : 'http://prazor.com/rest/getPartners/category/' + $scope.category.category_id
@@ -22,8 +23,28 @@
 
 
 		$scope.setItem = function(teaching){
-			$scope.$parent.currentCategory.subCategory = teaching;
-			$location.url('teaching/playlist');			
+			var config = {
+				method : 'GET',
+				url : 'http://prazor.com/rest/getPartners/entry/' + teaching.entry_id
+			}
+			//reset subcategoies
+			DataFactory.subCategories = {};
+
+			dataService.getData(config).then(
+				function(response){
+					if(response.data.length && response.data[0].categories.length){
+						DataFactory.subCategories = response.data[0];
+						DataFactory.subCategory = teaching;
+						$location.url('teaching/playlist');
+					}
+					else{
+						DataFactory.subCategory = teaching;
+						$location.url('teaching/playlist');
+					}
+					
+				},function(error){
+					console.log(error);
+			});	
 		};
 	}]);
 })();

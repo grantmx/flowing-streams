@@ -1,12 +1,13 @@
 (function(){
-	app.controller('TalkController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
+	app.controller('TalkController', ['$scope', '$location', 'dataService', 'DataFactory',
+		function($scope, $location, dataService, DataFactory){
 		$scope.error = '';
 
-		if($scope.$parent.currentCategory.category_id === undefined){
+		if(DataFactory.currentCategory.category_id === undefined){
 			$location.url('talk');
 		}
 		else{
-			$scope.category = $.extend(true, {}, $scope.$parent.currentCategory);
+			$scope.category = $.extend(true, {}, DataFactory.currentCategory);
 			var config = {
 				method : 'GET',
 				url : 'http://prazor.com/rest/getTalk/category/' + $scope.category.category_id
@@ -22,9 +23,28 @@
 
 
 		$scope.setItem = function(talk){
-			$scope.$parent.currentCategory.subCategory = talk;
-			$location.url('talk/playlist');
-			console.log(talk);
+			var config = {
+				method : 'GET',
+				url : 'http://prazor.com/rest/getPartners/entry/' + talk.entry_id
+			}
+			//reset subcategoies
+			DataFactory.subCategories = {};
+
+			dataService.getData(config).then(
+				function(response){
+					if(response.data.length && response.data[0].categories.length){
+						DataFactory.subCategories = response.data[0];
+						DataFactory.subCategory = talk;
+						$location.url('talk/playlist');
+					}
+					else{
+						DataFactory.subCategory = talk;
+						$location.url('talk/playlist');
+					}
+					
+				},function(error){
+					console.log(error);
+			});
 		};
 	}]);
 })();

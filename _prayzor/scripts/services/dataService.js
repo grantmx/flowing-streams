@@ -97,3 +97,17 @@ app.factory('DataSource', ['$http', '$q', function($http, $q){
            }
        };
     }]);
+
+app.factory('DataFactory', function(){
+	var publicApi = {};
+
+	publicApi.categories = {};
+	publicApi.currentCategory ={};
+	publicApi.subCategories = {};
+	publicApi.subCategory = {};
+	publicApi.currentLesson = {};
+	publicApi.genre = {};
+	publicApi.station = {};
+
+	return publicApi;
+});
