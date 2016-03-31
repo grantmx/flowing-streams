@@ -224,6 +224,18 @@ ul[rn-carousel] {
     white-space: nowrap;
 }
 
+.subcategory__item{
+    display: inline-block;
+}
+.subcategory__item__link{
+	display: block;
+	background: rgba(0,0,0, 0.4);
+	margin: 0 2px;
+    border-radius: 5px 5px 0px 0px;
+}
+.subcategory__item__name{
+	display: block;
+}
 
 /* Video Player*/
 .video{

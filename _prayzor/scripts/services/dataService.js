@@ -108,6 +108,12 @@ app.factory('DataFactory', function(){
 	publicApi.currentLesson = {};
 	publicApi.genre = {};
 	publicApi.station = {};
+	publicApi.currentStation = {
+		genre : {},
+		station : {},
+		stations : {},
+		$index : {}
+	};
 
 	return publicApi;
 });

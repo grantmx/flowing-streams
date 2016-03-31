@@ -1,9 +1,8 @@
 (function(){
-	app.controller('MainController', ['$scope', '$location', '$templateCache', function($scope, $location, $templateCache) {
+	app.controller('MainController', ['$scope', '$location', '$templateCache',
+		function($scope, $location, $templateCache) {
 		$scope.showSidebar = false;		
 		$scope.menuItem = 'menu';
-		$scope.currentStation = {};
-		$scope.currentCategory = {};
 		$scope.stopAudio = false;		
 		
 		$scope.$on('$routeChangeStart', function(next, current) {		   
@@ -32,12 +31,6 @@
 			else{
 				window.history.back();
 			}
-		};
-
-		$scope.user = {
-			fName : 'John',
-			lName : 'Doe',
-			email : 'john_doe@mail.com'
 		};
 		
     }]);

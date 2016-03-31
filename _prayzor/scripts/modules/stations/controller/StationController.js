@@ -1,7 +1,8 @@
 (function(){	
-	app.controller('StationController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
+	app.controller('StationController', ['$scope', '$location', 'dataService', 'DataFactory',
+		function($scope, $location, dataService, DataFactory){
 		$scope.error = '';	
-		console.log($scope);
+
 		$scope.playStation = function(station, index, isPlayerView){
 			var details = {};
 			
@@ -17,18 +18,24 @@
 		
 
 		function setStation(details){
-			$scope.currentStation.station = details.station;
-			$scope.currentStation.stations = details.stations;
-			$scope.currentStation.$index = (details.index >= 0) ? details.index : $scope.currentStation.$index;
+
+			DataFactory.currentStation.station = details.station;
+			DataFactory.station = details.station;
+			DataFactory.currentStation.stations = details.stations;
+			DataFactory.currentStation.$index = (details.index >= 0) ? details.index : $scope.currentStation.$index;
+			
 			$scope.hidePlayerBar = false;
+			$scope.station = details.station;
 		}
 
 		function fetchStations() {
-			if(!$scope.currentStation.genre){
+			if(!DataFactory.currentStation.genre.entry_id){
 				$location.url('music/genres');
 			}
 			else{
-				var entryID = $scope.currentStation.genre.entry_id,
+				$scope.currentStation = DataFactory.currentStation;
+				$scope.station = DataFactory.station;
+				var entryID = DataFactory.currentStation.genre.entry_id,
 					config = {
 					method : 'GET',
 					url : 'http://prazor.com/rest/getGenres/details/' + entryID

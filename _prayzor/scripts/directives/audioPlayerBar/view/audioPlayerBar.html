@@ -1,4 +1,4 @@
-<div class="span-1-1 station-songBar" ng-show="currentStation.station.song.title">
+<div class="span-1-1 station-songBar" ng-show="currentStation.station.song.title && !hidePlayerBar">
 	<p class="color-white station-songBar__info no-margin">
 		<marquee>
 			<span ng-show="currentStation.station.song.title" class="b" ng-bind-html="currentStation.station.song.title"></span>, 

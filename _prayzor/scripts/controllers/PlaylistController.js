@@ -1,18 +1,46 @@
 (function(){
-	app.controller('PlaylistController', ['$scope', '$location', 'dataService', 'DataSource', 'DataFactory', 
-		function($scope, $location, dataService, DataSource, DataFactory){
-		
+	app.controller('PlaylistController', ['$scope', '$location', '$timeout', 'dataService', 'DataSource', 'DataFactory', 
+		function($scope, $location, $timeout, dataService, DataSource, DataFactory){
+
 		$scope.error = '';
 
-		function getPlaylist(playList){
-			$scope.talk = $.extend(true, {}, DataFactory.subCategory);
+		function buildPlaylist(subcategories){
+			for(var i = 0; i < subcategories.length; i++){
+				setAllPlaylist(i, subcategories[i].category_playlist_url);
+			}
+		}
+
+		function setPlaylist(){
 			var config = {
-				url : playList || $scope.talk.kaltura_playlist_url
+				url : DataFactory.subCategory.kaltura_playlist_url
 			}
 
 			DataSource.get(config).then(
 				function(response){
 					$scope.playlist = response.urlset.url;
+				},function(error){
+					console.log(error);
+					$scope.error = error;
+			});
+		}
+
+		function setAllPlaylist(i, playlist){
+			var config = {
+				url : playlist
+			}
+
+			DataSource.get(config).then(
+				function(response){
+					$scope.subcategories.categories[i].playlist = response.urlset.url;
+					$timeout(function(){
+						$('.multiple-items' + i).slick({
+							  infinite: false,
+							  slidesToShow: 2,
+							  slidesToScroll: 2,
+							  arrows: true
+							});
+					}, 10);
+
 				},function(error){
 					console.log(error);
 					$scope.error = error;
@@ -25,16 +53,13 @@
 		else{
 			if(DataFactory.subCategories.categories && DataFactory.subCategories.categories.length){
 				$scope.subcategories = DataFactory.subCategories;
+				buildPlaylist($scope.subcategories.categories);
 			}
-			else{
-				getPlaylist();
-			}
+			setPlaylist();
 
 		}
 		
-		$scope.getPlaylist = function(playList){
-			getPlaylist(playList);
-		};
+		
 
 		$scope.playVideo = function(video){
 			console.log(video);
