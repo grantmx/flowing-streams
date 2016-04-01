@@ -6,7 +6,7 @@
 
 		function buildPlaylist(subcategories){
 			for(var i = 0; i < subcategories.length; i++){
-				setAllPlaylist(i, subcategories[i].category_playlist_url);
+				setSubcategoryPlaylist(i, subcategories[i].category_playlist_url);
 			}
 		}
 
@@ -24,7 +24,7 @@
 			});
 		}
 
-		function setAllPlaylist(i, playlist){
+		function setSubcategoryPlaylist(i, playlist){
 			var config = {
 				url : playlist
 			}
@@ -35,8 +35,8 @@
 					$timeout(function(){
 						$('.multiple-items' + i).slick({
 							  infinite: false,
-							  slidesToShow: 2,
-							  slidesToScroll: 2,
+							  slidesToShow: ($(window).width() < 500) ? 2 : 3,
+							  slidesToScroll: ($(window).width() < 500) ? 2 : 3,
 							  arrows: true
 							});
 					}, 10);
@@ -62,7 +62,6 @@
 		
 
 		$scope.playVideo = function(video){
-			console.log(video);
 			var location = $location.url(),
 				currentLocation = location.slice(1).split('/')[0];
 			DataFactory.currentCategory.video = video;
