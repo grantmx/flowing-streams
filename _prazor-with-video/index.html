@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+	<meta http-equiv='cleartype' content='on'>
+	<meta charset='utf-8'>
+
+	<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, user-scalable=0" />	
+	<title>Prazor</title>
+	<link rel="stylesheet" type="text/css" href="css/framework-mx.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/angular-carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<link rel="stylesheet" type="text/css" href="css/player-volume-control.css">
+	<link rel="stylesheet" type="text/css" href="css/subNav.css">
+
+	<!-- <script src="phonegap.js"></script>  -->
+	<!--<script src="scripts/NowPlaying.js"></script>-->
+	<style type="text/css">.headerContaner{ background-color: transparent; position: static;}</style>
+</head>
+<body ng-controller="MainController" ng-swipe-left="showSidebar = false" class="player-view-{{playerType}}">
+	<div class="page-sidebar" ng-show="showSidebar" ng-include='"partials/userDetails.html"' style="height:{{windowHeight}}px"></div>		
+	<!-- ng-style="{'width': pageWidth, 'left': leftPos}"  -->
+	<div class="grid page-container no-pad" ng-show="!showSidebar">
+		<div class="span-1-1 no-pad headerContaner" ng-include='"templates/header.html"'></div>
+		<!--<div class="span-1-1 no-pad subNavContainer" ng-include='"templates/subNav.html"' style="margin-top:{{stickyNavHeight}}px"></div>-->
+		<div class="span-1-1 no-pad" style="margin-bottom:{{playerHeight + 30}}px" ng-view ng-cloak></div>						
+	</div>
+	<audio-playerbar data-currentStation="currentStation" player-height="playerHeight" ng-hide="showSidebar"></audio-playerbar>
+	<div class="grid">
+		<div class="span-1-1">
+			<share-this></share-this>
+		</div>
+	</div>
+
+	
+	<!-- Vendor: Javascripts -->
+	<script src="scripts/jquery.min.js"></script>
+
+	<!-- Vendor: Angular, followed by our custom Javascripts -->
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/angular-route.min.js"></script>
+	<script src="scripts/angular-touch.min.js"></script>
+	<script src="scripts/angular-carousel.min.js"></script>
+	<script src="scripts/angular-sanitize.js"></script>
+	<script src="scripts/slick.min.js"></script>
+	<!--<script src="http://cdnapi.kaltura.com/p/1949551/sp/194955100/embedIframeJs/uiconf_id/30806841/partner_id/1949551"></script>-->
+	<script src="scripts/plugins/parser.min.js"></script>
+	<!-- Our Website Javascripts -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/services/xml2json.min.js"></script>
+	<script src="scripts/services/dataService.js"></script>
+	<script src="scripts/controllers/MainController.js"></script>
+	<script src="scripts/modules/genres/controller/GenreController.js"></script>
+	<script src="scripts/modules/stations/controller/StationController.js"></script>
+	<!--<script src="scripts/modules/teaching/controller/TeachingController.js"></script>
+	<script src="scripts/modules/teaching/controller/TeachingCategoriesController.js"></script>
+	<script src="scripts/modules/talk/controller/TalkCategoriesController.js"></script>
+	<script src="scripts/modules/talk/controller/TalkController.js"></script>-->
+	<script src="scripts/controllers/PlaylistController.js"></script>
+	<!--<script src="scripts/controllers/VideoController.js"></script>-->
+	<script src="scripts/modules/pageError/controller/PageErrorController.js"></script>
+	<script src="scripts/directives/audioPlayerBar/audioPlayerBar.js"></script>
+	<script src='https://cdn.slaask.com/chat.js'></script>
+	<!-- <script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "1c342c34-5814-4496-ba39-d516918da4ac", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script> -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73794751-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
