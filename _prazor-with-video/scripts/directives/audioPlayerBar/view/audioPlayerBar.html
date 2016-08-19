@@ -1,0 +1,64 @@
+<div class="span-1-1 station-songBar" style="bottom:{{playerHeight}}px" ng-show="currentStation.station.song.title && !hidePlayerBar">
+	<p class="color-white station-songBar__info no-margin">
+		<marquee>
+			<span ng-show="currentStation.station.song.title" class="b" ng-bind-html="currentStation.station.song.title"></span>, 
+			By - <span ng-show="currentStation.station.song.artist" ng-bind-html="currentStation.station.song.artist"></span>, 
+			Album: <span ng-show="currentStation.station.song.album" ng-bind-html="currentStation.station.song.album"></span>
+		</marquee>
+	</p>
+</div>
+
+<div class="grid player-bar no-pad" ng-hide="hidePlayerBar">	
+	<div class="station-info span-4-5-xs span-4-5-sm show-on-mobile no-pad top-space">
+		<div class="color-white show-on-mobile displayFlex">
+			<div class="span-1-4">
+				<img class="flex-img" ng-src="{{currentStation.station.song.cover || currentStation.station.station_image}}">
+			</div>
+			<div class="span-3-4 c no-pad align-self-center">
+				<p class="c no-margin color-gold uppercase station-info__name">{{currentStation.station.station_name}}</p>
+				<div class="grid">
+					<div class="span-1-1">
+						<share-this></share-this>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+	<div class="span-1-1 player-subtitle top-space show-on-mobile">
+		<p class="color-white c">
+			<span>{{currentStation.station.station_information}}</span>
+		</p>
+	</div>
+
+	<div class="player-container span-1-5-xs span-1-5-sm span-1-3-md no-pad">		
+		<ul class="player-controls no-margin">
+			<li class="no-pad">
+				<a class="span-1-4-xs span-1-3-md top-space previous" ng-click="previous(currentStation)">
+					<img src="images/Foward_icon_L.svg">
+				</a>
+			</li>
+			<li>
+				<a class="span-1-2-xs span-1-3-sm span-1-3-md c playPause" ng-click="playPause()">
+					<img class="player-play-pause" ng-src="images/{{playPauseBtn}}_icon.svg">
+				</a>
+			</li>
+			<li>
+				<a class="span-1-4-xs span-1-3-md top-space r forward" ng-click="next(currentStation)">
+					<img src="images/Foward_icon_R.svg">
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="station-details span-2-3-md hide-on-mobile no-pad align-self-center">
+		<div class="color-white top-space hide-on-mobile left-space pad-left">
+			<ul class="pad">
+				<li class="details color-grey no-margin">Your're Listening to: <span class="color-white b">{{currentStation.genre.title}} {{currentStation.station.station_name}}</span></li>
+				<li>{{currentStation.station.station_information}} </li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -13,7 +13,7 @@
 					'autoPlay': false
 				},
 				'params':{ // params allows you to set flash embed params such as wmode, allowFullScreen etc
-					'wmode': 'transparent' 
+					'wmode': 'transparent'
 				}
 			});
 		}
@@ -28,19 +28,19 @@
 
 		if($scope.$parent.currentCategory.video === undefined){
 			$location.url('talk');
-		}
-		else{
+		
+		}else{
 			$scope.video = $.extend(true, {}, $scope.$parent.currentCategory.video);
 			newVideoPlayer($scope.video);
 			$scope.playlist = $scope.$parent.currentCategory.playlist;
 			$timeout(function(){
 				console.log('timeout');
 				$('.multiple-items').slick({
-					  infinite: false,
-					  slidesToShow: 3,
-					  slidesToScroll: 2,
-					  arrows: true
-					});
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 2,
+					arrows: true
+				});
 			}, 10);
 			
 		}

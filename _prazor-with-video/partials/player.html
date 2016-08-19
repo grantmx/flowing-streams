@@ -1,0 +1,13 @@
+<div ng-controller="PlayerController">
+	<!-- <div id="prazor-player">Loading the player...</div> -->	
+	<!-- Player Controls -->
+	<a class="span-1-3-md top-space hide-on-mobile" ng-click="previous()" ng-show="isAudioPlayer">
+		<img src="images/Foward_icon_L.svg">
+	</a>
+	<a class="span-1-1-xs span-1-1-sm span-1-3-md c" ng-click="playPause()">
+		<img class="player-play-pause" ng-src="images/{{playPauseBtn}}_icon.svg">
+	</a>
+	<a class="span-1-3-md top-space r hide-on-mobile" ng-click="next()"  ng-show="isAudioPlayer">
+		<img src="images/Foward_icon_R.svg">
+	</a>
+</div>

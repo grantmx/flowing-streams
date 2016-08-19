@@ -1,0 +1,9 @@
+
+<ul class="view-genres">
+	<li class="span-1-2-xs span-1-2-sm span-1-3-md span-1-4-lg c align-left" ng-repeat="genre in genres">
+		<a ng-click="setGenre(genre)" class="color-white light-box">
+			<img class="" ng-src="images/genre_{{genre.title}}.svg">
+			<span class="upperCase b block">{{genre.title}}</span>
+		</a>		
+	</li>
+</ul>

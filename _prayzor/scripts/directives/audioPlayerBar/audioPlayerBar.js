@@ -17,7 +17,7 @@
 
 					
 
-					scope.currentStation.genre = scope.$parent.currentStation.genre
+					scope.currentStation.genre = scope.$parent.currentStation.genre;
 					scope.currentStation.station = scope.$parent.currentStation.station;
 					scope.currentStation.stations = scope.$parent.currentStation.stations;
 					scope.currentStation.$index = scope.$parent.currentStation.$index;
@@ -93,13 +93,13 @@
 
 				// builds the player
 				function buildPlayer (source){
-					var source = M3U.parse(source.data)
+					var source = M3U.parse(source.data);
 					
-					source = source[0].file
+					source = source[0].file;
 
 					if(!scope.audio){
 						scope.audio = document.createElement("audio");
-					}					
+					}
 
 					scope.audio.setAttribute('src', source); //change the source
 					scope.audio.load(); //load the new source
