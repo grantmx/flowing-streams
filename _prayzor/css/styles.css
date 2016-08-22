@@ -154,7 +154,7 @@ nav{
 
 /*Player Bar*/
 .player-bar {
-    background: #666 none repeat scroll 0 0;
+    background: rgba(45, 45, 45, 0.95) none repeat scroll 0 0;
     bottom: 0;
     position: fixed;
     width: 100%;
@@ -301,6 +301,16 @@ ul[rn-carousel] {
     left: 40%;
     top: 60px;
 }
+
+.dark-grey-line{
+  border-color: #555
+}
+
+.slaask-button{
+	bottom: 125px;
+}
+
+
 /*Mobile*/
 @media only screen and (max-width: 767px) {
 	
@@ -392,7 +402,7 @@ ul[rn-carousel] {
 }
 /*Tablet*/
 @media only screen and (min-width : 768px) {
-	.page-sidebar{display: none;}
+	/*.page-sidebar{display: none;}*/
 	.icon-menu img, .icon-heart img{
 		margin-top: .5em
 	}
@@ -428,7 +438,7 @@ ul[rn-carousel] {
 		margin-top: 1em;
 	}
 	.player-bar{
-		height: 100px;
+		height: 114px;
 	}
 	.station-songBar{
 		bottom: 100px;

@@ -16,11 +16,11 @@
 	<div class="span-1-1 light-box top-space">
 		<img class="hide-on-mobile" ng-src="images/genre_{{currentStation.genre.title}}.svg">
 		<p class="color-gold station-details upperCase no-margin">
-			<span class="b color-white show-on-mobile large no-margin">{{currentStation.genre.title}}</span> 
-			<span class="break-on-mobile" ng-show="currentStation.station.station_name">Now Playing</span>
-			<span class="b color-white hide-on-mobile">{{currentStation.genre.title}}</span> 
-			<span class="hide-on-mobile b color-white" ng-show="currentStation.station.station_name">-</span> 
-			<span class="b color-white" ng-show="currentStation.station.station_name">{{currentStation.station.station_name}}</span>
+			<span class="b color-white show-on-mobile large no-margin">{{genre.title || currentStation.genre.title}}</span> 
+			<span class="break-on-mobile" ng-show="station.station_name">Now Playing</span>
+			<span class="b color-white hide-on-mobile">{{genre.title || currentStation.genre.title}}</span> 
+			<span class="hide-on-mobile b color-white" ng-show="station.station_name">-</span> 
+			<span class="b color-white" ng-show="station.station_name">{{station.station_name}}</span>
 		</p>
 	</div>		
 </div>
@@ -33,7 +33,7 @@
 		<a class="span-4-6-xs span-4-6-sm span-1-1-md light-box show-on-mobile station-name" ng-click="playStation(station, $index, true)">
 			<span class="upperCase color-white b">{{station.station_name}}</span>			
 		</a>
-		<a class="span-1-6-xs span-1-6-sm span-1-1-md light-box no-pad" ng-click="playStation(station, $index, false)">
+		<a class="span-1-6-xs span-1-6-sm span-1-1-md light-box no-pad" ng-click="station.station_name == currentStation.station.station_name || playStation(station, $index, false)">
 			<img class="hide-on-mobile flex-img" ng-src="{{station.station_image}}">
 			<span class="speaker-bar block">
 				<svg ng-show="station.station_name == currentStation.station.station_name" width="41px" height="42px" viewBox="0 0 41 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">

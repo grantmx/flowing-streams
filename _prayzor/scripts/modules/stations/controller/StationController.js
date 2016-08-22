@@ -1,7 +1,8 @@
 (function(){	
-	app.controller('StationController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
+	app.controller('StationController', ['$scope', '$location', 'dataService', 'DataFactory',
+		function($scope, $location, dataService, DataFactory){
 		$scope.error = '';	
-		console.log($scope);
+
 		$scope.playStation = function(station, index, isPlayerView){
 			var details = {};
 			
@@ -11,27 +12,38 @@
 			if(isPlayerView){
 				$location.url('music/audioplayer');
 			}
-			setStation(details);
+			if(DataFactory.currentStation.station.station_id !== details.station.station_id){
+				setStation(details);
+			}
 			station.state = 'play';
 		};
 		
 
 		function setStation(details){
-			$scope.currentStation.station = details.station;
-			$scope.currentStation.stations = details.stations;
-			$scope.currentStation.$index = (details.index >= 0) ? details.index : $scope.currentStation.$index;
+
+			DataFactory.currentStation.station = details.station;
+			DataFactory.station = details.station;
+			DataFactory.currentStation.stations = details.stations;
+			DataFactory.currentStation.$index = (details.index >= 0) ? details.index : $scope.currentStation.$index;
+			$scope.genre = DataFactory.currentStation.genre;
+			DataFactory.genre = $scope.genre;
+			
 			$scope.hidePlayerBar = false;
+			$scope.station = details.station;
 		}
 
 		function fetchStations() {
-			if(!$scope.currentStation.genre){
+			if(!DataFactory.currentStation.genre.entry_id){
 				$location.url('music/genres');
 			}
 			else{
-				var entryID = $scope.currentStation.genre.entry_id,
+				$scope.currentStation = DataFactory.currentStation;
+				$scope.station = DataFactory.currentStation.station;
+				$scope.genre = DataFactory.genre;
+				var entryID = DataFactory.currentStation.genre.entry_id,
 					config = {
 					method : 'GET',
-					url : 'http://prazor.com/rest/getGenres/details/' + entryID
+					url : 'http://prazor.com/rest-dev/getGenres/details/' + entryID
 				};
 
 				dataService.getData(config).then(

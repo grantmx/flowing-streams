@@ -4,6 +4,7 @@
 	</div>
 	<div class="span-10-10 top-space bottom-space">
 		<h3 class="video__title normal color-white">{{video.title.__text}}</h3>
+		<p class="video__pub__date small color-white">{{video.publication_date.__text | date:'MMMM dd yyyy'}}</p>
 	</div>
 	<!--<div class="span-1-1">
 		<a href="" class="video__listen c"><img src="images/listen_icon.svg"> Listen</a>
@@ -18,7 +19,17 @@
 		<p class="color-white" ng-bind-html="video.description.__text"></p>
 	</div>
 
-	<div class="span-1-1 scrollable--bg">
+	<div class="span-1-1 no-pad">
+		<ul class="subcategory no-margin">
+			<li class="subcategory__item c" ng-repeat="subcat in subcategories.categories track by $index">
+				<a class="subcategory__item__link color-white" ng-click="getPlaylist(subcat.category_playlist_url)">
+					<span class="subcategory__item__name pad">{{subcat.category_name}}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="span-1-1 scrollable--bg no-pad">
 		<ul class="multiple-items no-margin">
 			<li class="scrollable__item c pad" ng-repeat="item in playlist track by $index">
 				<a href="" ng-click="playVideo(item.video)" class="light-box c">

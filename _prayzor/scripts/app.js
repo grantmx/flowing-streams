@@ -23,3 +23,21 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
 	.when("/404", {templateUrl: "scripts/modules/pageError/views/404.html", controller: 'PageErrorController'})
 	.otherwise({redirectTo:'/404'});
 }]);
+
+
+app.initialize = function() {
+	this.bindEvents();
+};
+    
+app.bindEvents = function() {
+	document.addEventListener('deviceready', this.onDeviceReady, true);
+};
+
+app.onDeviceReady = function() {
+	angular.element(document).ready(function() {
+		angular.bootstrap(document);
+	});
+
+	window.analytics.startTrackerWithId('UA-73794751-1');
+};
+

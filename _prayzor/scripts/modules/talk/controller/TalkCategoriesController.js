@@ -1,5 +1,6 @@
 (function(){
-	app.controller('TalkCategoriesController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
+	app.controller('TalkCategoriesController', ['$scope', '$location', 'dataService', 'DataFactory', 
+		function($scope, $location, dataService, DataFactory){
 		$scope.error = '';
 		
 		var config = {
@@ -16,7 +17,7 @@
 
 		$scope.setCategory = function(category){
 			$scope.$emit('stopAudio');
-			$scope.$parent.currentCategory = category;
+			DataFactory.currentCategory = category;
 			$location.url('talk/talk');
 		};
 	}]);

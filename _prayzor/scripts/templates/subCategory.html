@@ -1,3 +1,24 @@
+<div class="grid top-space no-pad">
+	<div class="span-1-1 no-pad">
+		<ul class="subcategory no-margin">
+			<li class="subcategory__item c" ng-repeat="item in subcatData track by $index">
+				<a class="subcategory__item__link color-white" ng-click="getSubcategories(item)">
+					<span class="subcategory__item__name pad">{{item.category_name}}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="span-1-1 scrollable--bg no-pad">
+		<ul class="multiple-items no-margin">
+			<li class="scrollable__item c pad" ng-repeat="item in data_subcategory">
+				<a href="" ng-click="setItem(item)" class="light-box c">
+					<img class="stretch" alt="{{item.category_description}}" ng-src="{{item.partner_thumbnail}}">
+					<span class="color-white scrollable__item__title--eliples">{{item.title}}</span>
+				</a>		
+			</li>
+		</ul>
+	</div>
+</div>
 
 <ul class="no-margin grid no-pad">
 	<li class="span-1-2-xs span-1-2-sm span-1-3-md span-1-4-lg c align-left" ng-repeat="item in data">

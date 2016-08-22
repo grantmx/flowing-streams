@@ -1,33 +1,34 @@
 (function(){
-	app.directive('audioPlayerbar', ['$sce', 'dataService', '$timeout', function ($sce, dataService, $timeout){
+	app.directive('audioPlayerbar', ['$sce', 'dataService', '$timeout', 'DataFactory',
+		function ($sce, dataService, $timeout, DataFactory){
 		return {
 			restrict: 'E',
 			templateUrl: 'scripts/directives/audioPlayerBar/view/audioPlayerBar.html',
 			scope: {
-				ngModel : '='
+				playerHeight: '='
 			},
 			link: function(scope, element, attr){
 
 				var timer;
 
 				function setStation(details){
-					scope.$parent.currentStation.station = details.station;
-					scope.$parent.currentStation.stations = details.stations;					
-					scope.$parent.currentStation.$index = (details.index >= 0) ? details.index : scope.$parent.currentStation.$index;
+					DataFactory.currentStation.station = details.station;
+					DataFactory.currentStation.stations = details.stations;					
+					DataFactory.currentStation.$index = (details.index >= 0) ? details.index : DataFactory.currentStation.$index;
 
 					
 
-					scope.currentStation.genre = scope.$parent.currentStation.genre;
-					scope.currentStation.station = scope.$parent.currentStation.station;
-					scope.currentStation.stations = scope.$parent.currentStation.stations;
-					scope.currentStation.$index = scope.$parent.currentStation.$index;
+					scope.currentStation.genre = DataFactory.currentStation.genre
+					scope.currentStation.station = DataFactory.currentStation.station;
+					scope.currentStation.stations = DataFactory.currentStation.stations;
+					scope.currentStation.$index = DataFactory.currentStation.$index;
 					scope.hidePlayerBar = false;
 
 
 					getStationPlaylistDetails(scope.currentStation.station);
 				}
 
-				function getCurrentSongDetails(data){
+				function setCurrentSongDetails(data){
 					var song = data.song[0],
 						currentDate = new Date(),
 						currentGMT = currentDate.toGMTString();
@@ -43,13 +44,14 @@
 
 						timeout = ((songSeconds + songDuration) - currentSeconds);
 
-						scope.$parent.currentStation.station.song = song;
+						DataFactory.currentStation.station.song = song;
 
 						if(timeout > 0){
 							$timeout.cancel(timer);
 							timer = $timeout(function() {
 			                    getStationPlaylistDetails(scope.currentStation.station);
 			                }, timeout);
+			                scope.playerHeight = $(element).find('.player-bar').height();
 						}
 						else{
 							$timeout.cancel(timer);
@@ -57,8 +59,6 @@
 			                    getStationPlaylistDetails(scope.currentStation.station);
 			                }, 5000);
 						}
-						
-
 
 				}
 
@@ -66,12 +66,12 @@
 					// Call to get Playlist details
 					var config = {
 						method : 'GET',
-						url : 'https://streamdb6web.securenetsystems.net/player_status_update/' + station.station_id + '_history.txt'
+						url : station.station_history_url
 					};
 					
 					dataService.getPlaylistDetails(config).then(
 						function(response){
-							getCurrentSongDetails(response.data.playHistory);
+							setCurrentSongDetails(response.data.playHistory);
 						},function(error){
 							console.log(error);
 						});
@@ -93,13 +93,13 @@
 
 				// builds the player
 				function buildPlayer (source){
-					var source = M3U.parse(source.data);
+					var source = M3U.parse(source.data)
 					
-					source = source[0].file;
+					source = source[0].file
 
 					if(!scope.audio){
 						scope.audio = document.createElement("audio");
-					}
+					}					
 
 					scope.audio.setAttribute('src', source); //change the source
 					scope.audio.load(); //load the new source
@@ -125,20 +125,19 @@
 					setPlayPauseBtn(scope.playing);
 					scope.hidePlayerBar = true;
 					$timeout.cancel(timer);
-					scope.currentStation = {};
-					scope.$parent.currentStation = {};
+					DataFactory.currentStation.station = {};
+					$timeout.cancel(timer);
 				}
-				
-				scope.currentStation = {};
+				scope.currentStation = DataFactory.currentStation;
 				scope.hidePlayerBar = true;
-
+				scope.playerHeight = $(element).find('.player-bar').height();
 				// Watches Index to change station
-				scope.$watch('$parent.currentStation.$index', function (index, oldIndex) {
-					if (index !== oldIndex && scope.$parent.currentStation.stations) {
+				scope.$watch('currentStation.$index', function (index, oldIndex) {
+					if (index !== oldIndex && DataFactory.currentStation.stations) {
 						var details = {};
-						details.station = scope.$parent.currentStation.stations[index];
+						details.station = DataFactory.currentStation.stations[index];
 						details.index = index;
-						details.stations = scope.$parent.currentStation.stations;
+						details.stations = DataFactory.currentStation.stations;
 
 						details.index = index;
 						setStation(details);
@@ -173,9 +172,9 @@
 					setPlayPauseBtn(scope.playing);			
 				};
 
-				scope.$watch('$parent.currentStation.station.station_id', function(model, oldModel){	
+				scope.$watch('currentStation.station.station_id', function(model, oldModel){	
 					if(model && model !== oldModel){				
-						playAudio(scope.$parent.currentStation.station);
+						playAudio(DataFactory.currentStation.station);
 						scope.hidePlayerBar = false;
 					}			
 				});

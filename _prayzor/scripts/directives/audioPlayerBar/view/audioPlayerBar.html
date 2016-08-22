@@ -1,4 +1,4 @@
-<div class="span-1-1 station-songBar" ng-show="currentStation.station.song.title">
+<!-- <div class="span-1-1 station-songBar" style="bottom:{{playerHeight}}px" ng-show="currentStation.station.song.title && !hidePlayerBar">
 	<p class="color-white station-songBar__info no-margin">
 		<marquee>
 			<span ng-show="currentStation.station.song.title" class="b" ng-bind-html="currentStation.station.song.title"></span>, 
@@ -6,50 +6,64 @@
 			Album: <span ng-show="currentStation.station.song.album" ng-bind-html="currentStation.station.song.album"></span>
 		</marquee>
 	</p>
-</div>
+</div> -->
 
 <div class="grid player-bar no-pad" ng-hide="hidePlayerBar">	
-	<div class="station-info span-4-5-xs span-4-5-sm show-on-mobile no-pad top-space">
-		<div class="color-white show-on-mobile">
-			<div class="span-1-4">
-				<img class="flex-img" ng-src="{{currentStation.station.song.cover || currentStation.station.station_image}}">
+	<div class="station-info span-4-5-xs span-4-5-sm no-pad grid">
+		<div class="color-white span-1-1 no-pad displayFlex">
+			<div class="span-1-4 c span-1-6-md">
+				<img style="max-height:75px;width:100%;max-width:75px" ng-src="{{currentStation.station.song.cover || currentStation.station.station_image}}">
 			</div>
-			<p class="span-3-4 c no-pad no-margin color-gold uppercase station-info__name align-self-center">{{currentStation.station.station_name}}</p>
+			<div class="span-3-4 span-5-6-md dark-grey-line left-line">
+				<p>
+					<span ng-show="currentStation.station.song.title" class="b" ng-bind-html="currentStation.station.song.title"></span><br>
+					<small ng-show="currentStation.station.song.artist" ng-bind-html="currentStation.station.song.artist"></small><br>
+					<small ng-show="currentStation.station.song.album" ng-bind-html="currentStation.station.song.album"></small>
+				</p>
+				<!-- <p class="no-margin color-gold uppercase station-info__name">{{currentStation.station.station_name}}</p> -->
+				<!-- <div class="grid">
+					<div class="span-1-1">
+						<share-this></share-this>
+					</div>
+				</div> -->
+			</div>
+			
 		</div>
+
 	</div>
 
-	<div class="span-1-1 player-subtitle top-space show-on-mobile">
+	<!-- <div class="span-1-1 player-subtitle top-space">
 		<p class="color-white c">
 			<span>{{currentStation.station.station_information}}</span>
 		</p>
-	</div>
+	</div> -->
 
-	<div class="player-container span-1-5-xs span-1-5-sm span-1-3-md no-pad">		
+	<div class="span-1-5-md span-2-10 no-pad">		
 		<ul class="player-controls no-margin">
-			<li class="no-pad">
+			<!-- <li class="no-pad">
 				<a class="span-1-4-xs span-1-3-md top-space previous" ng-click="previous(currentStation)">
 					<img src="images/Foward_icon_L.svg">
 				</a>
-			</li>
+			</li> -->
 			<li>
-				<a class="span-1-2-xs span-1-3-sm span-1-3-md c playPause" ng-click="playPause()">
-					<img class="player-play-pause" ng-src="images/{{playPauseBtn}}_icon.svg">
+				<a class="span-1-1 r playPause" ng-click="playPause()">
+					<img class="player-play-pause" ng-src="images/{{playPauseBtn}}_icon.svg" style="max-width:75px;width:100%;">
 				</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a class="span-1-4-xs span-1-3-md top-space r forward" ng-click="next(currentStation)">
 					<img src="images/Foward_icon_R.svg">
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 
-	<div class="station-details span-2-3-md hide-on-mobile no-pad">
+	<!-- <div class="station-details span-2-3-md hide-on-mobile no-pad align-self-center">
 		<div class="color-white top-space hide-on-mobile left-space pad-left">
 			<ul class="pad">
-				<li class="details color-grey no-margin">Your're Listening to: <span class="color-white b">{{currentStation.genre.title}} {{currentStation.station.station_name}}</span></li>
+				<li class="details color-grey no-margin">You're Listening to: <span class="color-white b">{{currentStation.genre.title}} {{currentStation.station.station_name}}</span></li>
 				<li>{{currentStation.station.station_information}} </li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 </div>

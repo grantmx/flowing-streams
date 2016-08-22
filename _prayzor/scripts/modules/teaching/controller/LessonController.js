@@ -1,8 +1,9 @@
 (function(){
-	app.controller('LessonController', ['$scope', '$location', 'dataService', function($scope, $location, dataService){
+	app.controller('LessonController', ['$scope', '$location', 'dataService', 'DataFactory', 
+		function($scope, $location, dataService, DataFactory){
 		$scope.error = '';		
-		console.log($scope.$parent.currentLesson);
-		if(!$scope.$parent.currentLesson.kaltura_playlist_url){
+		console.log(DataFactory.currentLesson);
+		if(!DataFactory.currentLesson.kaltura_playlist_url){
 			$location.url('teaching');
 		}
 	}]);
