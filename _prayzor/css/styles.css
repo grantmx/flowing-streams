@@ -20,8 +20,6 @@ ul > li{
 	height: 100%;
 }
 
-
-
 .openSideBar {
     position: absolute;
     top: 0;
@@ -34,9 +32,13 @@ ul > li{
 
 .sideBarLinks{
 	display: block;
-    padding: 10px;
+    padding: 20px;
     font-size: 16px;
     background-color: rgba(255,255,255, 0.25);
+}
+
+ul.unstyled.vertical-list li {
+    margin-bottom: 1px;
 }
 
 .playerMargin {
@@ -307,12 +309,16 @@ ul[rn-carousel] {
 }
 
 .slaask-button{
-	bottom: 125px;
+	bottom: 125px !important;
 }
 
 
 /*Mobile*/
 @media only screen and (max-width: 767px) {
+
+.view-genres > li > a > span {
+    font-size: 14px;
+}
 	
 	.hide-on-mobile{display: none;}
 	/* page-sidebar Menu Styles */

@@ -44,7 +44,7 @@
 				$('.slaask-message').toggleClass('hide');			
 			}
 			else{
-				window.history.back();
+				$window.history.back();
 			}
 		};
 

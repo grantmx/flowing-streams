@@ -33,7 +33,7 @@
 		<a class="span-4-6-xs span-4-6-sm span-1-1-md light-box show-on-mobile station-name" ng-click="playStation(station, $index, true)">
 			<span class="upperCase color-white b">{{station.station_name}}</span>			
 		</a>
-		<a class="span-1-6-xs span-1-6-sm span-1-1-md light-box no-pad" ng-click="station.station_name == currentStation.station.station_name || playStation(station, $index, false)">
+		<a class="span-1-6-xs span-1-6-sm span-1-1-md light-box no-pad" ng-click="station.row_id == currentStation.station.row_id || playStation(station, $index, false)">
 			<img class="hide-on-mobile flex-img" ng-src="{{station.station_image}}">
 			<span class="speaker-bar block">
 				<svg ng-show="station.station_name == currentStation.station.station_name" width="41px" height="42px" viewBox="0 0 41 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
